@@ -1,4 +1,3 @@
-
 package a404_notfound.sourceappwater.model;
 
 import java.util.List;
@@ -7,17 +6,15 @@ import java.util.List;
  * Created by Michelle on 2/27/2017.
  */
 
-public enum WaterType {
-    BOTTLED("Bottled"),
-    LAKE("Lake"),
-    RIVER("River"),
-    STREAM("Stream"),
-    WELL("Well");
+public enum WaterCondition {
+    CONTAMINATED("Contaminated"),
+    SAFE("Safe");
+
 
     private final String rep;
 
     // Constructor
-    WaterType(String rep) {
+    WaterCondition(String rep) {
         this.rep = rep;
     }
 
