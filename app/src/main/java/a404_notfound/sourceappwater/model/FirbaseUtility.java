@@ -10,6 +10,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Joshua on 2/23/2017.
  */
@@ -93,5 +96,17 @@ public class FirbaseUtility {
             return mAuth.getCurrentUser().getEmail();
         }
         return null;
+    }
+
+    public void addReport(DatabaseReference mRefIn, Report report) {
+        DatabaseReference reportLocation = mRefIn.child("reports");
+        String key = reportLocation.push().getKey();
+        Map<String, Object> reportvalues = report.toMap();
+
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("/reports/" + key, reportvalues);
+
+        mRefIn.updateChildren(updates);
+
     }
 }
