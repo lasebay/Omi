@@ -14,13 +14,17 @@ public class Report {
     private static int reportNumber;
     private String reporter;
     private String coordinates;
+    private String waterType;
+    private String waterCondition;
 
     public Report() {
         //Needed for the datasnapshot;
     }
-    public Report (String reporter, String coordinates) {
+    public Report (String reporter, String coordinates, String waterType, String waterCondition) {
         this.reporter = reporter;
         this.coordinates = coordinates;
+        this.waterType = waterType;
+        this.waterCondition = waterCondition;
         //add date and time from fire base as default.
         reportNumber++;
     }
@@ -37,6 +41,8 @@ public class Report {
         map.put("repoNum", 5);
         map.put("reporter", reporter);
         map.put("coor", coordinates);
+        map.put("watertype", waterType);
+        map.put("watercondition", waterCondition);
         return map;
     }
 
@@ -46,6 +52,8 @@ public class Report {
                     + "Report Number: 5 \n"
                     + "Reporter: " + reporter + "\n"
                     + "Coordinates : " + coordinates
+                    + "\n Water Type: " + waterType
+                    + "\n Water Condition: " + waterCondition
                     + "\n";
     }
 }

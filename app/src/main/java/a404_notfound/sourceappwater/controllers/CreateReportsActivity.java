@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,10 @@ public class CreateReportsActivity extends AppCompatActivity {
     private EditText mName;
     private EditText mCoordinates;
     private FirbaseUtility fbinstance;
+    private Spinner spinner;
+    private Spinner spinner2;
+    private String waterCondition;
+    private String waterType;
 
 
     @Override
@@ -36,15 +41,37 @@ public class CreateReportsActivity extends AppCompatActivity {
         mCoordinates = (EditText) findViewById(R.id.Coordinates);
         fbinstance = new FirbaseUtility();
 
-        final Spinner spinner = (Spinner) findViewById(R.id.waterType);
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<WaterType>(Arrays.asList(WaterType.values())));
+        Spinner spinner = (Spinner) findViewById(R.id.waterType);
+        ArrayAdapter<WaterType> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<WaterType>(Arrays.asList(WaterType.values())));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                waterType = parent.getItemAtPosition(position).toString();
+            }
 
-        final Spinner spinner2 = (Spinner) findViewById(R.id.waterCondition);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<WaterCondition>(Arrays.asList(WaterCondition.values())));
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                waterType = parent.getItemAtPosition(1).toString();
+            }
+        });
+
+        Spinner spinner2 = (Spinner) findViewById(R.id.waterCondition);
+        ArrayAdapter<WaterCondition> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<WaterCondition>(Arrays.asList(WaterCondition.values())));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                waterCondition = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                waterCondition = parent.getItemAtPosition(1).toString();
+            }
+        });
 
         Button mCreateReportbttn = (Button) findViewById(R.id.createReport);
         mCreateReportbttn.setOnClickListener(new View.OnClickListener() {
@@ -67,9 +94,11 @@ public class CreateReportsActivity extends AppCompatActivity {
     private Report makeReport() {
         String name = mName.getText().toString();
         String coordinates = mCoordinates.getText().toString();
+        String wt = waterType;
+        String wc = waterCondition;
 
         if (name != null && coordinates != null) {
-            Report report = new Report(name, coordinates);
+            Report report = new Report(name, coordinates, wt, wc);
             return report;
         }
         return null;
