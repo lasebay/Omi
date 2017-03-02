@@ -13,14 +13,13 @@ import a404_notfound.sourceappwater.model.FirbaseUtility;
 import a404_notfound.sourceappwater.model.Report;
 import a404_notfound.sourceappwater.model.ReportsHolder;
 
-public class ViewReportActivity extends AppCompatActivity {
+public class ViewReportActivity extends DrawerActivity {
 
     private TextView mView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_report);
 
         mView = (TextView) findViewById(R.id.viewableReport);
 
@@ -38,5 +37,10 @@ public class ViewReportActivity extends AppCompatActivity {
 //
 //            }
 //        };
+    }
+
+    @Override
+    protected int getcView() {
+        return R.layout.activity_view_report;
     }
 }
