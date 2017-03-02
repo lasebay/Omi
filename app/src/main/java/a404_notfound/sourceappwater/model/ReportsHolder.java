@@ -24,9 +24,7 @@ public class ReportsHolder {
     public static String getHolder() {
         String list = "";
         for (Map.Entry<Integer, Report> entry : holder.entrySet()) {
-            list = list + "Report Number: "
-                    + entry.getKey()
-                    + "\n" + entry.getValue()
+            list = list + entry.getValue()
                     + "\n";
         }
         return list;
