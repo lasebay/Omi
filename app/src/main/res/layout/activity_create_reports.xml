@@ -11,58 +11,60 @@
     tools:context="a404_notfound.sourceappwater.controllers.CreateReportsActivity">
 
     <EditText
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:text="Name"
         android:ems="10"
+        android:id="@+id/name"
+        android:textAlignment="viewStart"
+        android:layout_width="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="62dp"
-        android:id="@+id/name" />
+        android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:text="Coordinates"
         android:ems="10"
+        android:layout_marginTop="20dp"
+        android:id="@+id/Coordinates"
+        android:textAlignment="viewStart"
         android:layout_below="@+id/name"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="59dp"
-        android:id="@+id/Coordinates" />
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:id="@+id/waterType"
         android:layout_below="@+id/Coordinates"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="111dp"
-        android:id="@+id/waterType" />
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:id="@+id/waterCondition"
         android:layout_below="@+id/waterType"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
-        android:id="@+id/waterCondition" />
-
-    <TextView
-        android:text="Create New Report "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/name"
-        android:layout_marginStart="19dp"
-        android:id="@+id/textView2" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Create Report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="67dp"
+        android:id="@+id/createReport"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/Coordinates"
-        android:layout_marginBottom="15dp"
-        android:id="@+id/createReport" />
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/reportCancleBttn"
+        android:layout_alignEnd="@+id/createReport"
+        android:layout_alignStart="@+id/createReport" />
+
 </RelativeLayout>

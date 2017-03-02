@@ -73,6 +73,13 @@ public class CreateReportsActivity extends AppCompatActivity {
             }
         });
 
+        Button mCancelBttn = (Button) findViewById(R.id.reportCancleBttn);
+        mCancelBttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ReportsActivity.class));
+            }
+        });
         Button mCreateReportbttn = (Button) findViewById(R.id.createReport);
         mCreateReportbttn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import a404_notfound.sourceappwater.R;
 
-public class ReportsActivity extends AppCompatActivity {
+public class ReportsActivity extends DrawerActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,5 +36,10 @@ public class ReportsActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    protected int getcView() {
+        return R.layout.activity_reports;
     }
 }
