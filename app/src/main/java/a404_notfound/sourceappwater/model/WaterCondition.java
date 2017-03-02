@@ -7,9 +7,10 @@ import java.util.List;
  */
 
 public enum WaterCondition {
-    CONTAMINATED("Contaminated"),
-    SAFE("Safe");
-
+    WASTE("Waste"),
+    CLEAR("Treatable-Clear"),
+    MUDDY("Treatable-Muddy"),
+    POTABLE("Potable");
 
     private final String rep;
 

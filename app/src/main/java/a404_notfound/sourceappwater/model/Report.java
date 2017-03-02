@@ -11,7 +11,8 @@ public class Report {
     //someone please double check these types
     private int[] date;
     private int[] time;
-    private static int reportNumber;
+    private static int reportNumber = 0;
+    private int reportN = reportNumber;
     private String reporter;
     private String coordinates;
     private String waterType;
@@ -25,6 +26,7 @@ public class Report {
         this.coordinates = coordinates;
         this.waterType = waterType;
         this.waterCondition = waterCondition;
+        reportN = reportNumber;
         //add date and time from fire base as default.
         reportNumber++;
     }
@@ -38,7 +40,7 @@ public class Report {
         Map<String, Object> map = new HashMap<>();
         map.put("date", "March 1 2017");
         map.put("time", "1:16");
-        map.put("repoNum", 5);
+        map.put("repoNum", reportN);
         map.put("reporter", reporter);
         map.put("coor", coordinates);
         map.put("watertype", waterType);
@@ -49,7 +51,7 @@ public class Report {
     public String toString() {
         return "Date: March 1 2017 \n"
                     + "Time: 1:16 \n"
-                    + "Report Number: 5 \n"
+                    + "Report Number: " + reportN + "\n"
                     + "Reporter: " + reporter + "\n"
                     + "Coordinates : " + coordinates
                     + "\n Water Type: " + waterType
