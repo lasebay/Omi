@@ -52,7 +52,7 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        mName = (EditText) findViewById(R.id.nameofuser);
+        mName = (EditText) findViewById(R.id.name_of_user);
         mName.setOnEditorActionListener(new TextView.OnEditorActionListener()  {
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -100,7 +100,7 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-        Button mUpdateButton = (Button) findViewById(R.id.logout_button);
+        Button mUpdateButton = (Button) findViewById(R.id.update_button);
         mUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -44,10 +44,10 @@
         android:layout_centerHorizontal="true">
 
         <EditText
+            android:id="@+id/name_of_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tell us your name..."
-            android:id="@+id/nameofuser" />
+            android:hint="Tell us your name..." />
     </android.support.design.widget.TextInputLayout>
 
 </RelativeLayout>
