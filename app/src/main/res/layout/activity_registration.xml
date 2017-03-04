@@ -11,13 +11,13 @@
     tools:context="a404_notfound.sourceappwater.controllers.RegistrationActivity">
 
     <Button
-        android:text="Update"
+        android:id="@+id/update_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="46dp"
-        android:id="@+id/logout_button" />
+        android:text="Update" />
 
     <TextView
         android:layout_width="wrap_content"
