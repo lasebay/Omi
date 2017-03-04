@@ -33,7 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import a404_notfound.sourceappwater.model.*;
 
-public class LogoutActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class RegistrationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private DatabaseReference mRef;
     private  FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -50,7 +50,7 @@ public class LogoutActivity extends AppCompatActivity implements AdapterView.OnI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_logout);
+        setContentView(R.layout.activity_registration);
 
         mName = (EditText) findViewById(R.id.nameofuser);
         mName.setOnEditorActionListener(new TextView.OnEditorActionListener()  {

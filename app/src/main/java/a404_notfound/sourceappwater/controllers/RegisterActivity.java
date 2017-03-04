@@ -216,7 +216,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                                 }
                                 attemptComplete = false;
                             } else {
-                                Intent switchScreen = new Intent(getApplicationContext(), LogoutActivity.class);
+                                Intent switchScreen = new Intent(getApplicationContext(), RegistrationActivity.class);
                                 startActivity(switchScreen);
                                 attemptComplete = true;
                             }
