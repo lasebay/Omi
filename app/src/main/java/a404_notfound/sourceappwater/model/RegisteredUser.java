@@ -14,7 +14,6 @@ public class RegisteredUser {
     private String address;
     private String coordinates;
     private int loginAttemps;
-    private Map<String, String> usinfo = new HashMap<>();
 
     public RegisteredUser() {
         username = "No Name";

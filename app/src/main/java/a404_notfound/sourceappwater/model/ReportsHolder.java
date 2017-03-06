@@ -1,5 +1,7 @@
 package a404_notfound.sourceappwater.model;
 
+import android.util.SparseArray;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,11 +10,11 @@ import java.util.Map;
  */
 
 public class ReportsHolder {
-    private static HashMap<Integer, Report> holder = new HashMap<>();
+    private static final SparseArray<Report> holder = new SparseArray<>();
     private static int i = 0;
 
     public static void addReport(Report report) {
-        Integer id = new Integer(i);
+        Integer id = Integer.valueOf(i);
         holder.put(id, report);
         i++;
     }
@@ -24,8 +26,8 @@ public class ReportsHolder {
     public static String getHolder() {
 
         String list = "";
-        for (Map.Entry<Integer, Report> entry : holder.entrySet()) {
-            list = list + entry.getValue()
+        for (int i = 0; i < holder.size(); i++) {
+            list = list + holder.valueAt(i)
                     + "\n";
         }
         return list;

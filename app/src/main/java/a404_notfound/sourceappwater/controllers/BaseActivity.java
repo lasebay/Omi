@@ -1,7 +1,6 @@
 package a404_notfound.sourceappwater.controllers;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,12 +11,8 @@ import a404_notfound.sourceappwater.R;
 import a404_notfound.sourceappwater.model.FirbaseUtility;
 
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class BaseActivity extends DrawerActivity {
@@ -82,7 +77,7 @@ public class BaseActivity extends DrawerActivity {
         usename = (TextView) findViewById(R.id.username1);
         address = (TextView) findViewById(R.id.address);
         coordinates = (TextView) findViewById(R.id.coordinates);
-        accountType = (TextView) findViewById(R.id.accoungtype);
+        accountType = (TextView) findViewById(R.id.accountType);
     }
 
     //Stop the firbase Listener
