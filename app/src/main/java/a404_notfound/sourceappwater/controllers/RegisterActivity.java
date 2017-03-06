@@ -148,7 +148,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
+     * errors are presented and no successful login attempt is made.
      */
     private boolean attemptSignUp() {
         attemptComplete = false;
@@ -192,7 +192,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         }
 
         if (cancel) {
-            //Go to where the incorrect information ooccured
+            // Go to where the incorrect information occurred
             focusView.requestFocus();
         } else {
             mAuth.createUserWithEmailAndPassword(email, password)
@@ -205,18 +205,18 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
                             if (!task.isSuccessful()) {
-                                //TODO Show authentication faild with popup
+                                // TODO Show authentication failed with popup
                                 Throwable e = task.getException();
                                 if(e instanceof FirebaseAuthWeakPasswordException) {
-                                    mPasswordView.setError("Password is too week");
+                                    mPasswordView.setError("Password is too weak");
                                 } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                                    mEmailView.setError("The email is invalid");
+                                    mEmailView.setError("Email is invalid");
                                 } else if (e instanceof FirebaseAuthUserCollisionException ) {
-                                    mEmailView.setError("Email already in use");
+                                    mEmailView.setError("Email is already in use");
                                 }
                                 attemptComplete = false;
                             } else {
-                                Intent switchScreen = new Intent(getApplicationContext(), LogoutActivity.class);
+                                Intent switchScreen = new Intent(getApplicationContext(), RegistrationActivity.class);
                                 startActivity(switchScreen);
                                 attemptComplete = true;
                             }
