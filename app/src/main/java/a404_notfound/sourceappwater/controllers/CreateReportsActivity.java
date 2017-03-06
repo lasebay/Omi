@@ -1,5 +1,6 @@
 package a404_notfound.sourceappwater.controllers;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,8 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 import a404_notfound.sourceappwater.R;
 import a404_notfound.sourceappwater.model.FirbaseUtility;
@@ -21,7 +24,7 @@ import a404_notfound.sourceappwater.model.WaterCondition;
 import a404_notfound.sourceappwater.model.WaterType;
 
 
-public class CreateReportsActivity extends AppCompatActivity {
+public class CreateReportsActivity extends Activity {
 
     private EditText mName;
     private EditText mCoordinates;
@@ -103,9 +106,13 @@ public class CreateReportsActivity extends AppCompatActivity {
         String coordinates = mCoordinates.getText().toString();
         String wt = waterType;
         String wc = waterCondition;
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:s");
+        String formattedDate = df.format(c.getTime());
+
 
         if (name != null && coordinates != null) {
-            Report report = new Report(name, coordinates, wt, wc);
+            Report report = new Report(name, coordinates, wt, wc, formattedDate);
             return report;
         }
         return null;

@@ -22,6 +22,7 @@ public class ReportsHolder {
     }
 
     public static String getHolder() {
+
         String list = "";
         for (Map.Entry<Integer, Report> entry : holder.entrySet()) {
             list = list + entry.getValue()

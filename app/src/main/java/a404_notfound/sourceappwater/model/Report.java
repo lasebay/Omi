@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Report {
     //someone please double check these types
-    private int[] date;
+    private String date;
     private int[] time;
     private static int reportNumber = 0;
     private int reportN = reportNumber;
@@ -21,11 +21,12 @@ public class Report {
     public Report() {
         //Needed for the datasnapshot;
     }
-    public Report (String reporter, String coordinates, String waterType, String waterCondition) {
+    public Report (String reporter, String coordinates, String waterType, String waterCondition, String date) {
         this.reporter = reporter;
         this.coordinates = coordinates;
         this.waterType = waterType;
         this.waterCondition = waterCondition;
+        this.date = date;
         reportN = reportNumber;
         //add date and time from fire base as default.
         reportNumber++;
@@ -38,8 +39,7 @@ public class Report {
      */
     public Map<String, Object> toMap() {
         Map<String, Object> map = new HashMap<>();
-        map.put("date", "March 1 2017");
-        map.put("time", "1:16");
+        map.put("date", date);
         map.put("repoNum", reportN);
         map.put("reporter", reporter);
         map.put("coor", coordinates);
@@ -49,8 +49,7 @@ public class Report {
     }
 
     public String toString() {
-        return "Date: March 1 2017 \n"
-                    + "Time: 1:16 \n"
+        return "Date: " + date + "\n"
                     + "Report Number: " + reportN + "\n"
                     + "Reporter: " + reporter + "\n"
                     + "Coordinates : " + coordinates
@@ -58,4 +57,5 @@ public class Report {
                     + "\n Water Condition: " + waterCondition
                     + "\n";
     }
+
 }

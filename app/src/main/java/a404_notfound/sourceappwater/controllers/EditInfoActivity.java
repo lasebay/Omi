@@ -67,12 +67,38 @@ public class EditInfoActivity extends DrawerActivity {
         String name = mName.getText().toString();
         String address = mAddrs.getText().toString();
         String coordinates  = mCoord.getText().toString();
+        boolean cancel = false;
+        View focusView = null;
 
-        DatabaseReference useInfo = fbinstance.getmRef().child("/users").child(fbinstance.getUser());
+        mName.setError(null);
 
-        useInfo.child("/name").setValue(name);
-        useInfo.child("addrs").setValue(address);
-        useInfo.child("/coor").setValue(coordinates);
+        if (name == null) {
+            cancel = true;
+            focusView = mName;
+            mName.setError("This field cannot be empty");
+        }
+
+        if (address == null) {
+            cancel = true;
+            focusView = mAddrs;
+            mAddrs.setError("This field cannot be empty");
+        }
+
+        if (coordinates == null) {
+            cancel = true;
+            focusView = mCoord;
+            mCoord.setError("This field cannot be empty");
+        }
+
+        if (cancel) {
+            focusView.requestFocus();
+        } else {
+            DatabaseReference useInfo = fbinstance.getmRef().child("/users").child(fbinstance.getUser());
+
+            useInfo.child("/name").setValue(name);
+            useInfo.child("addrs").setValue(address);
+            useInfo.child("/coor").setValue(coordinates);
+        }
     }
     @Override
     protected int getcView() {

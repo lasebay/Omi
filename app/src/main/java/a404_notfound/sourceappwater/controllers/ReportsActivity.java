@@ -13,7 +13,6 @@ public class ReportsActivity extends DrawerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reports);
 
         Button viewreport = (Button) findViewById(R.id.viewreport);
         viewreport.setOnClickListener(new View.OnClickListener() {
