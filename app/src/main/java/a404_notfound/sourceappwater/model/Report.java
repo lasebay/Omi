@@ -17,6 +17,7 @@ public class Report {
     private String coordinates;
     private String waterType;
     private String waterCondition;
+    private int contamLevel;
 
     /**
      * Needed for the datasnapshot
@@ -42,6 +43,27 @@ public class Report {
         this.date = date;
         reportN = reportNumber;
         //add date and time from fire base as default.
+        reportNumber++;
+    }
+
+    /**
+     *  Second Constructor for Report specifically for Contaminaion Report
+     *  Used when worker wants to report a contamin
+     * @param reporter Name of user making the report
+     * @param coordinates The longitude and latitude of the water source
+     * @param waterCondition The suitability of the water for drinking
+     * @param date The day the report is made
+     * @param contamLevel The contamination level for parts per million
+     */
+
+
+    public Report(String reporter, String coordinates, String waterCondition, String date, int contamLevel){
+        this.reporter = reporter;
+        this.coordinates = coordinates;
+        this.waterCondition = waterCondition;
+        this.date = date;
+        this.contamLevel = contamLevel;
+        reportN = reportNumber;
         reportNumber++;
     }
 
