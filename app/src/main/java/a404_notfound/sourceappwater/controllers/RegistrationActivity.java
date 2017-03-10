@@ -53,6 +53,7 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
 
         mName = (EditText) findViewById(R.id.name_of_user);
         mName.setOnEditorActionListener(new TextView.OnEditorActionListener()  {
+            @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 return (id == R.id.login || id == EditorInfo.IME_NULL);
             }
