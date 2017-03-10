@@ -15,7 +15,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.Worker;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,9 +35,9 @@ import a404_notfound.sourceappwater.model.*;
 public class RegistrationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private DatabaseReference mRef;
-    private  FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private  final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static final String TAG = "Info";
-    public static List<String> userCert = Arrays.asList("User", "Worker", "Manager", "Administrator");
+    private static final List<String> userCert = Arrays.asList("User", "Worker", "Manager", "Administrator");
 
     // Firebase Objects
     private FirebaseAuth mAuth;
@@ -54,11 +53,9 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
 
         mName = (EditText) findViewById(R.id.name_of_user);
         mName.setOnEditorActionListener(new TextView.OnEditorActionListener()  {
+            @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    return true;
-                }
-                return false;
+                return (id == R.id.login || id == EditorInfo.IME_NULL);
             }
         });
 
@@ -134,7 +131,7 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
         String a = "/users/";
         Map<String, Object> values = new HashMap<>();
 
-        if (ucas == "Administrator") {
+        if (ucas.equals("Administrator")) {
             Admin e = new Admin(name);
             String nme = e.getUsername();
             String addrs = e.getAddress();
@@ -145,7 +142,7 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
             values.put(a + uid + "/coor/", coor);
             values.put(a + uid + "/accttype/", e.toString());
             mRef.updateChildren(values);
-        } else if(ucas =="Worker") {
+        } else if(ucas.equals("Worker")) {
             Worker e = new Worker(name);
             String nme = e.getUsername();
             String addrs = e.getAddress();
@@ -156,7 +153,7 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
             values.put(a + uid + "/coor/", coor);
             values.put(a + uid + "/accttype/", e.toString());
             mRef.updateChildren(values);
-        } else if (ucas == "Manager") {
+        } else if (ucas.equals("Manager")) {
             Manager e = new Manager(name);
             String nme = e.getUsername();
             String addrs = e.getAddress();

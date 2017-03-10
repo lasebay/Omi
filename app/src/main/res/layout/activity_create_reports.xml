@@ -11,21 +11,21 @@
     tools:context="a404_notfound.sourceappwater.controllers.CreateReportsActivity">
 
     <EditText
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
         android:id="@+id/name"
-        android:textAlignment="viewStart"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/name"
+        android:textAlignment="viewStart" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Coordinates"
+        android:text="@string/coordinates"
         android:ems="10"
         android:layout_marginTop="20dp"
         android:id="@+id/Coordinates"
@@ -50,7 +50,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="Create Report"
+        android:text="@string/createReport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="67dp"
@@ -59,12 +59,12 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Cancel"
+        android:id="@+id/reportCancelBttn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/reportCancleBttn"
         android:layout_alignEnd="@+id/createReport"
-        android:layout_alignStart="@+id/createReport" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/createReport"
+        android:text="@string/cancel" />
 
 </RelativeLayout>

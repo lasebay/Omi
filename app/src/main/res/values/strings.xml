@@ -19,6 +19,20 @@
     <string name="i_agree_to_the_terms_and_conditions">I agree to the terms and conditions</string>
     <string name="re_enter_password">Re - Enter Password</string>
     <string name="name">Name</string>
+    <string name="coordinates">Coordinates</string>
+    <string name="address">Address</string>
+    <string name="AcctType">Account Type</string>
+    <string name="editInfo">Edit Info?</string>
+    <string name="createReport">Create Report</string>
+    <string name="cancel">Cancel</string>
+    <string name="submitChanges">Submit Changes</string>
+    <string name="mainActivityDisplay">This is the main activity for the user</string>
+    <string name="update">Update</string>
+    <string name="userQuery">What type of user are you?</string>
+    <string name="nameQuery">Tell us your name...</string>
+    <string name="viewReport">View Report</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
     <string name="title_activity_navigate">NavigateActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

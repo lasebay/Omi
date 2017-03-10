@@ -2,7 +2,6 @@ package a404_notfound.sourceappwater.controllers;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,11 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Locale;
 
 import a404_notfound.sourceappwater.R;
 import a404_notfound.sourceappwater.model.FirbaseUtility;
@@ -45,7 +46,7 @@ public class CreateReportsActivity extends Activity {
         fbinstance = new FirbaseUtility();
 
         Spinner spinner = (Spinner) findViewById(R.id.waterType);
-        ArrayAdapter<WaterType> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<WaterType>(Arrays.asList(WaterType.values())));
+        ArrayAdapter<WaterType> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<>(Arrays.asList(WaterType.values())));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -61,7 +62,7 @@ public class CreateReportsActivity extends Activity {
         });
 
         Spinner spinner2 = (Spinner) findViewById(R.id.waterCondition);
-        ArrayAdapter<WaterCondition> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<WaterCondition>(Arrays.asList(WaterCondition.values())));
+        SpinnerAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<>(Arrays.asList(WaterCondition.values())));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -76,7 +77,7 @@ public class CreateReportsActivity extends Activity {
             }
         });
 
-        Button mCancelBttn = (Button) findViewById(R.id.reportCancleBttn);
+        Button mCancelBttn = (Button) findViewById(R.id.reportCancelBttn);
         mCancelBttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,13 +108,12 @@ public class CreateReportsActivity extends Activity {
         String wt = waterType;
         String wc = waterCondition;
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:s");
+        SimpleDateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:s", Locale.US);
         String formattedDate = df.format(c.getTime());
 
 
         if (name != null && coordinates != null) {
-            Report report = new Report(name, coordinates, wt, wc, formattedDate);
-            return report;
+            return new Report(name, coordinates, wt, wc, formattedDate);
         }
         return null;
     }
