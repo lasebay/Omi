@@ -65,7 +65,7 @@ public class RegisteredUser {
     }
 
     public Map<String, Object> toMap() {
-        HashMap<String, Object> ret = new HashMap<>();
+        Map<String, Object> ret = new HashMap<>();
         ret.put("name", username);
         ret.put("addrs", address);
         ret.put("coord", coordinates);

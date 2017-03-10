@@ -88,7 +88,7 @@ public class FirbaseUtility {
         return null;
     }
 
-    public String getUserEmail(){
+    public CharSequence getUserEmail(){
         if (mAuth != null) {
             return mAuth.getCurrentUser().getEmail();
         }
