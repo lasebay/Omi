@@ -16,7 +16,8 @@ import a404_notfound.sourceappwater.R;
 public class DrawerActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private final String[] tabs = {"Home", "User Profile", "Reports", "Find Water","Settings", "Logout", "Submitted Reports"};
+    private final String[] tabs = {"Home", "User Profile", "Report Screen", "Find Water","Settings", "Logout", "Submitted Reports"};
+    private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class DrawerActivity extends Activity {
             } else if (position == 5 ) {
                 startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
             } else if (position ==  2){
-                startActivity(new Intent(getApplicationContext(), ReportsActivity.class));
+                startActivity(new Intent(getApplicationContext(), ReportScreenActivity.class));
             } else if (position == 6) {
                 startActivity(new Intent(getApplicationContext(), ViewReportActivity.class));
 

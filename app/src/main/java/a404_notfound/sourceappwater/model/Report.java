@@ -17,10 +17,24 @@ public class Report {
     private String coordinates;
     private String waterType;
     private String waterCondition;
+    private int contamLevel;
 
+    /**
+     * Needed for the datasnapshot
+     */
     public Report() {
-        //Needed for the datasnapshot;
     }
+
+    /**
+     *  Constructor for Report.
+     *  Used when users want to report a new water source.
+     *
+     * @param reporter Name of user making the report
+     * @param coordinates The longitude and latitude of the water source
+     * @param waterType Denotes what is the source of the water
+     * @param waterCondition The suitability of the water for drinking
+     * @param date The day the report is made
+     */
     public Report (String reporter, String coordinates, String waterType, String waterCondition, String date) {
         this.reporter = reporter;
         this.coordinates = coordinates;
@@ -33,8 +47,30 @@ public class Report {
     }
 
     /**
+     *  Second Constructor for Report specifically for Contaminaion Report
+     *  Used when worker wants to report a contamin
+     * @param reporter Name of user making the report
+     * @param coordinates The longitude and latitude of the water source
+     * @param waterCondition The suitability of the water for drinking
+     * @param date The day the report is made
+     * @param contamLevel The contamination level for parts per million
+     */
+
+
+    public Report(String reporter, String coordinates, String waterCondition, String date, int contamLevel){
+        this.reporter = reporter;
+        this.coordinates = coordinates;
+        this.waterCondition = waterCondition;
+        this.date = date;
+        this.contamLevel = contamLevel;
+        reportN = reportNumber;
+        reportNumber++;
+    }
+
+    /**
      * Method to wrap the report data for placement
      * in database
+     *
      * @return map containing instance variables
      */
     public Map<String, Object> toMap() {
@@ -48,6 +84,18 @@ public class Report {
         return map;
     }
 
+    /**
+     * Formats the report's information in this order:
+     *  Date: The day the report was made
+     *  Report number: The unique ID# for the report
+     *  Reporter: Name of user who made the report
+     *  Coordinates: Longitutde and  of the location of the water
+     *  Water type: Denotes what is the source of the water
+     *  Water condition: The suitability of the water for drinking
+     * And returns it as a String
+     *
+     * @return String representation of the report
+     */
     public String toString() {
         return "Date: " + date + "\n"
                     + "Report Number: " + reportN + "\n"
