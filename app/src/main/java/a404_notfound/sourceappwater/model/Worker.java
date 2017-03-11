@@ -7,6 +7,12 @@ package a404_notfound.sourceappwater.model;
  */
 
 public class Worker extends RegisteredUser {
+
+    /**
+     * Constructor for worker
+     *
+     * @param name Username of worker
+     */
     public Worker(String name) {
         super(name);
     }

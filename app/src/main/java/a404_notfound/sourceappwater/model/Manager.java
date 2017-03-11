@@ -7,6 +7,12 @@ package a404_notfound.sourceappwater.model;
  */
 
 public class Manager extends Worker {
+
+    /**
+     * Contructor for making a manager account
+     *
+     * @param name username of manager
+     */
     public Manager(String name) {
         super(name);
     }

@@ -10,12 +10,16 @@ import java.util.Map;
  */
 
 public class RegisteredUser {
+    // make username final?
     private String username;
     private String address;
     private String coordinates;
     private int loginAttemps;
     private Map<String, String> usinfo = new HashMap<>();
 
+    /**
+     * Generic constructor
+     */
     public RegisteredUser() {
         username = "No Name";
         coordinates = "None";
@@ -23,39 +27,84 @@ public class RegisteredUser {
         loginAttemps = 0;
     }
 
+    /**
+     * Contructor for making an actual account
+     *
+     * @param name username of account user
+     */
     public RegisteredUser(String name) {
         this();
         username = name;
     }
 
+    /**
+     * Getter for the username of the account
+     *
+     * @return the username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Setter for the username of the account
+     *
+     * @param username the new username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * Getter for coordinates of user
+     *
+     * @return the longitude and latitude of the user
+     */
     public String getCoordinates() {
         return coordinates;
     }
 
+    /**
+     * Setter for coordinates of user
+     *
+     * @param coordinates the new location of the user
+     */
     public void setCoordinates(String coordinates) {
         this.coordinates = coordinates;
     }
 
+    /**
+     * Getter for the number of login attempts
+     *
+     * @return the number of failed login attempts for the user
+     */
     public int getLoginAttemps() {
         return loginAttemps;
     }
 
+    /**
+     * Setter for login attempts
+     *
+     * @param loginAttemps the new number of login attempts
+     */
     public void setLoginAttemps(int loginAttemps) {
         this.loginAttemps = loginAttemps;
     }
 
+    /**
+     * Getter for the current address of the user
+     *
+     * @return the address of the user
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * Setter for the address of the user
+     *
+     * @param address the new address of the user
+     */
     public void setAddress(String address) {
         this.address = address;
     }
@@ -65,6 +114,11 @@ public class RegisteredUser {
         return "User";
     }
 
+    /**
+     * Gives a map of all the user's account's information
+     *
+     * @return a Map with all the user's information
+     */
     public Map<String, Object> toMap() {
         HashMap<String, Object> ret = new HashMap<>();
         ret.put("name", username);
