@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * Created by Michelle on 2/27/2017.
+ *
+ * enum that
  */
 
 public enum WaterCondition {
@@ -14,15 +16,27 @@ public enum WaterCondition {
 
     private final String rep;
 
-    // Constructor
+    /**
+     * Constructor
+     *
+     * @param rep the name of the enum
+     */
     WaterCondition(String rep) {
         this.rep = rep;
     }
 
+    /**
+     * Getter for the name of the enum
+     *
+     * @return the string representation of the enum
+     */
     public String getRep() {
         return rep;
     }
 
+    /**
+     * @return the string representation of the enum
+     */
     public String toString() {
         return rep;
     }
