@@ -8,15 +8,16 @@ import android.widget.Button;
 
 import a404_notfound.sourceappwater.R;
 
-public class ReportScreenActivity extends AppCompatActivity {
+public class ReportScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_screen);
 
-        Button reportsactivity = (Button) findViewById(R.id.reports);
-        reportsactivity.setOnClickListener(new View.OnClickListener() {
+
+        Button waterreport = (Button) findViewById(R.id.waterreport);
+        waterreport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent switchScreen = new Intent(getApplicationContext(), ReportsActivity.class);
@@ -24,13 +25,18 @@ public class ReportScreenActivity extends AppCompatActivity {
             }
         });
 
-        Button contamination = (Button) findViewById(R.id.contaminationreport);
-        reportsactivity.setOnClickListener(new View.OnClickListener() {
+        Button contaminationreport = (Button) findViewById(R.id.contamreport);
+        waterreport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent switchScreen = new Intent(getApplicationContext(), ContaminationReport.class);
                 startActivity(switchScreen);
             }
         });
+
+
+
     }
+
+
 }

@@ -4,21 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="a404_notfound.sourceappwater.controllers.ReportScreenActivity">
+    tools:context="a404_notfound.sourceappwater.controllers.ReportScreen">
 
     <Button
-        android:id="@+id/reports"
+        android:id="@+id/waterreport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Water Report"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="92dp" />
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="7dp"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <Button
-        android:id="@+id/contaminationreport"
+        android:id="@+id/contamreport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contamination Report"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="191dp" />
+        android:text="Contamintation Report "
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="58dp"
+        tools:layout_editor_absoluteY="99dp"
+        tools:ignore="HardcodedText,MissingConstraints" />
 </android.support.constraint.ConstraintLayout>
