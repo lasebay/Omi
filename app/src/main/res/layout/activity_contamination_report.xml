@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     tools:context="a404_notfound.sourceappwater.controllers.ContaminationReport">
 
+    <Button
+        android:id="@+id/createreport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Report"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="93dp"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <Button
+        android:id="@+id/viewreport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Reports"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="202dp"
+        tools:ignore="HardcodedText,MissingConstraints" />
 </android.support.constraint.ConstraintLayout>
