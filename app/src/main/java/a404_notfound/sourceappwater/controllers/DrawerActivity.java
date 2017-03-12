@@ -16,7 +16,7 @@ import a404_notfound.sourceappwater.R;
 public class DrawerActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private String[] tabs = {"Home", "User Profile", "Report Screen", "Find Water","Settings", "Logout", "Submitted Reports"};
+    private final String[] tabs = {"Home", "User Profile", "Report Screen", "Find Water","Settings", "Logout", "Submitted Reports"};
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
