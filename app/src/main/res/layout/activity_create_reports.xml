@@ -20,6 +20,7 @@
             android:orientation="vertical"
             android:weightSum="1">
 
+
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
@@ -60,6 +61,7 @@
 
     <Button
         android:id="@+id/reportCancleBttn"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/createReport"
@@ -75,5 +77,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="67dp"
         android:text="Create Report" />
+
 
 </RelativeLayout>

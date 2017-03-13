@@ -8,6 +8,7 @@ import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,6 +31,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import android.widget.SpinnerAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -80,7 +82,7 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
         fbinstance = new FirbaseUtility();
 
         Spinner spinner = (Spinner) findViewById(R.id.waterType);
-        ArrayAdapter<WaterType> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<WaterType>(Arrays.asList(WaterType.values())));
+        ArrayAdapter<WaterType> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<>(Arrays.asList(WaterType.values())));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -96,7 +98,7 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
         });
 
         Spinner spinner2 = (Spinner) findViewById(R.id.waterCondition);
-        ArrayAdapter<WaterCondition> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<WaterCondition>(Arrays.asList(WaterCondition.values())));
+        SpinnerAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<>(Arrays.asList(WaterCondition.values())));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -111,7 +113,7 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
             }
         });
 
-        Button mCancelBttn = (Button) findViewById(R.id.reportCancleBttn);
+        Button mCancelBttn = (Button) findViewById(R.id.reportCancelBttn);
         mCancelBttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -194,6 +196,7 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
 
         if ((username != null) && (mMarkerPosition != null)) {
             return new Report(username, mMarkerPosition, wt, wc, formattedDate);
+
         }
         return null;
     }
