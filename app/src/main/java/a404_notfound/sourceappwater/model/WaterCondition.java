@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Michelle on 2/27/2017.
  *
- * enum that
+ * enum that describes the condition of the water
  */
 
 public enum WaterCondition {
