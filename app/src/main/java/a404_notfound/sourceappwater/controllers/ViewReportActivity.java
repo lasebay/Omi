@@ -7,6 +7,9 @@ import android.widget.TextView;
 import a404_notfound.sourceappwater.R;
 import a404_notfound.sourceappwater.model.ReportsHolder;
 
+/**
+ * Controller for the view report page
+ */
 public class ViewReportActivity extends DrawerActivity {
 
 

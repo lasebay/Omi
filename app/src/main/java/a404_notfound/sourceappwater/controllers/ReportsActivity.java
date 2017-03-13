@@ -7,6 +7,9 @@ import android.widget.Button;
 
 import a404_notfound.sourceappwater.R;
 
+/**
+ * Controller for the reports tab on the UI
+ */
 public class ReportsActivity extends DrawerActivity {
 
     @Override
@@ -26,7 +29,8 @@ public class ReportsActivity extends DrawerActivity {
         createreport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchScreen = new Intent(getApplicationContext(), CreateReportsActivity.class);
+                Intent switchScreen = new Intent(getApplicationContext(),
+                        CreateReportsActivity.class);
                 startActivity(switchScreen);
             }
         });

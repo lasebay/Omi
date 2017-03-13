@@ -46,7 +46,9 @@ public class CreateReportsActivity extends Activity {
         fbinstance = new FirbaseUtility();
 
         Spinner spinner = (Spinner) findViewById(R.id.waterType);
-        ArrayAdapter<WaterType> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<>(Arrays.asList(WaterType.values())));
+        ArrayAdapter<WaterType> adapter = new ArrayAdapter(
+                this,android.R.layout.simple_spinner_item,
+                new ArrayList<>(Arrays.asList(WaterType.values())));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -62,7 +64,9 @@ public class CreateReportsActivity extends Activity {
         });
 
         Spinner spinner2 = (Spinner) findViewById(R.id.waterCondition);
-        SpinnerAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<>(Arrays.asList(WaterCondition.values())));
+        SpinnerAdapter adapter2 = new ArrayAdapter(
+                this,android.R.layout.simple_spinner_item,
+                new ArrayList<>(Arrays.asList(WaterCondition.values())));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

@@ -15,6 +15,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Controller for the user's profile screen
+ */
 public class BaseActivity extends DrawerActivity {
       private static final String TAG = "Info";
 
@@ -51,10 +54,14 @@ public class BaseActivity extends DrawerActivity {
                 //String value = dataSnapshot.getValue(String.class);
                 //Log.d(TAG, "Value is: " + value);
 
-                String n = dataSnapshot.child("users").child(fbinstance.getUser()).child("name").getValue().toString();
-                String m = dataSnapshot.child("users").child(fbinstance.getUser()).child("addrs").getValue().toString();
-                String o = dataSnapshot.child("users").child(fbinstance.getUser()).child("coor").getValue().toString();
-                String p = dataSnapshot.child("users").child(fbinstance.getUser()).child("accttype").getValue().toString();
+                String n = dataSnapshot.child("users").child(fbinstance.getUser()).child(
+                        "name").getValue().toString();
+                String m = dataSnapshot.child("users").child(fbinstance.getUser()).child(
+                        "addrs").getValue().toString();
+                String o = dataSnapshot.child("users").child(fbinstance.getUser()).child(
+                        "coor").getValue().toString();
+                String p = dataSnapshot.child("users").child(fbinstance.getUser()).child(
+                        "accttype").getValue().toString();
                 usename.setText(n);
                 address.setText(m);
                 coordinates.setText(fbinstance.getUserEmail());

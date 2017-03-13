@@ -32,12 +32,17 @@ import com.google.firebase.database.ValueEventListener;
 
 import a404_notfound.sourceappwater.model.*;
 
-public class RegistrationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+/**
+ * Controller for creating a new user account
+ */
+public class RegistrationActivity extends AppCompatActivity
+        implements AdapterView.OnItemSelectedListener {
 
     private DatabaseReference mRef;
     private  final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static final String TAG = "Info";
-    private static final List<String> userCert = Arrays.asList("User", "Worker", "Manager", "Administrator");
+    private static final List<String> userCert = Arrays.asList("User", "Worker", "Manager",
+            "Administrator");
 
     // Firebase Objects
     private FirebaseAuth mAuth;
@@ -60,7 +65,8 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
         });
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, userCert);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,
+                userCert);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 

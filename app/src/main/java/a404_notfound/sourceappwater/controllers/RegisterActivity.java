@@ -213,7 +213,8 @@ public class RegisterActivity extends AppCompatActivity {
                                     mEmailView.setError("Email is already in use");
                                 }
                             } else {
-                                Intent switchScreen = new Intent(getApplicationContext(), RegistrationActivity.class);
+                                Intent switchScreen = new Intent(getApplicationContext(),
+                                        RegistrationActivity.class);
                                 startActivity(switchScreen);
                             }
                         }

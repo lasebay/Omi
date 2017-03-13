@@ -11,6 +11,9 @@ import com.google.firebase.database.DatabaseReference;
 import a404_notfound.sourceappwater.R;
 import a404_notfound.sourceappwater.model.FirbaseUtility;
 
+/**
+ * Controller for changing user information
+ */
 public class EditInfoActivity extends DrawerActivity {
 
     private EditText mName;
@@ -84,7 +87,8 @@ public class EditInfoActivity extends DrawerActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            DatabaseReference useInfo = fbinstance.getmRef().child("/users").child(fbinstance.getUser());
+            DatabaseReference useInfo = fbinstance.getmRef().child("/users").child(
+                    fbinstance.getUser());
 
             useInfo.child("/name").setValue(name);
             useInfo.child("addrs").setValue(address);

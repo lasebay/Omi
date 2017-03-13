@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import a404_notfound.sourceappwater.R;
 
+/**
+ *
+ */
 public class HqActivity extends DrawerActivity {
 
     @Override
