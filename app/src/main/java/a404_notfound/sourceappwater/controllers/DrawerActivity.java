@@ -16,8 +16,7 @@ import a404_notfound.sourceappwater.R;
 public class DrawerActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private String[] tabs = {"Home", "User Profile", "Reports", "Find Water","Settings", "Logout", "Submitted Reports"};
-    private ActionBarDrawerToggle mDrawerToggle;
+    private final String[] tabs = {"Home", "User Profile", "Reports", "Find Water","Settings", "Logout", "Submitted Reports"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,21 +26,23 @@ public class DrawerActivity extends Activity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+        mDrawerList.setAdapter(new ArrayAdapter<>(this,
                 R.layout.drawer_list_layout, tabs));
 
         mDrawerList.setOnItemClickListener(new DrawerActivity.DrawerItemClickListener());
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
 
             /** Called when a drawer has settled in a completely closed state. */
+            @Override
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             /** Called when a drawer has settled in a completely open state. */
+            @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
@@ -49,7 +50,6 @@ public class DrawerActivity extends Activity {
         };
 
         // Set the drawer toggle as the DrawerListener
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
     /* Called whenever we call invalidateOptionsMenu() */

@@ -1,7 +1,6 @@
 
 package a404_notfound.sourceappwater.model;
 
-import java.util.List;
 
 /**
  * Created by Michelle on 2/27/2017.

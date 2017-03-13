@@ -15,7 +15,6 @@ public class RegisteredUser {
     private String address;
     private String coordinates;
     private int loginAttemps;
-    private Map<String, String> usinfo = new HashMap<>();
 
     /**
      * Generic constructor
@@ -120,7 +119,7 @@ public class RegisteredUser {
      * @return a Map with all the user's information
      */
     public Map<String, Object> toMap() {
-        HashMap<String, Object> ret = new HashMap<>();
+        Map<String, Object> ret = new HashMap<>();
         ret.put("name", username);
         ret.put("addrs", address);
         ret.put("coord", coordinates);

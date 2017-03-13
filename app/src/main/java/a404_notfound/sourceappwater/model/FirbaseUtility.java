@@ -4,11 +4,8 @@ import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -144,10 +141,10 @@ public class FirbaseUtility {
      * Getter for user email from database unless
      * the authentication wasn't instantiated
      *
-     * @return The user's email or
-     *         null if no authentication
+     * @return The user's email
+     *         Null if no authentication or does not exist
      */
-    public String getUserEmail(){
+    public CharSequence getUserEmail(){
         if (mAuth != null) {
             return mAuth.getCurrentUser().getEmail();
         }
