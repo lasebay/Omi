@@ -80,7 +80,7 @@ public class DrawerActivity extends Activity {
                 startActivity(new Intent(getApplicationContext(), ViewReportActivity.class));
 
             } else if (position == 7) {
-                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                startActivity(new Intent(getApplicationContext(), WaterAvailabilty.class));
 
             }
         }

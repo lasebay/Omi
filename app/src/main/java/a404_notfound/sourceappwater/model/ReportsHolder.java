@@ -21,6 +21,10 @@ public class ReportsHolder {
         return holder.get(i);
     }
 
+    public static HashMap getReportList() {
+        return holder;
+    }
+
     public static String getHolder() {
 
         String list = "";

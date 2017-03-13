@@ -26,4 +26,6 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_water_availabilty">Map</string>
+    <string name="mapText">Click and Drag the Marker to the water source</string>
 </resources>
