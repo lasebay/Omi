@@ -172,7 +172,7 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
                         .child("name")
                         .getValue()
                         .toString();
-                mUserName.setText("Name: " + username);
+                mUserName.setText("Author: " + username);
             }
 
             @Override

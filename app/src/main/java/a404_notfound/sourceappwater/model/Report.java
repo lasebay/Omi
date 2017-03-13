@@ -38,6 +38,14 @@ public class Report {
         return coordinates;
     }
 
+    public String getWaterType() {
+        return waterType;
+    }
+
+    public String getWaterCondition() {
+        return waterCondition;
+    }
+
     /**
      * Method to wrap the report data for placement
      * in database

@@ -28,9 +28,11 @@ import a404_notfound.sourceappwater.R;
 import a404_notfound.sourceappwater.model.Report;
 import a404_notfound.sourceappwater.model.ReportsHolder;
 
-public class WaterAvailabilty extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class WaterAvailabilty extends DrawerActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
+    private MapView mMapView;
     private GoogleMap mMap;
+    private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
     private Marker mMarker;
@@ -38,11 +40,18 @@ public class WaterAvailabilty extends FragmentActivity implements OnMapReadyCall
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_water_availabilty);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
+        // *** IMPORTANT ***
+        // MapView requires that the Bundle you pass contain _ONLY_ MapView SDK
+        // objects or sub-Bundles.
+        Bundle mapViewBundle = null;
+        if (savedInstanceState != null) {
+            mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY);
+        }
+        mMapView = (MapView) findViewById(R.id.map);
+        mMapView.onCreate(mapViewBundle);
+
+        mMapView.getMapAsync(this);
 
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -51,9 +60,15 @@ public class WaterAvailabilty extends FragmentActivity implements OnMapReadyCall
                     .addApi(LocationServices.API)
                     .build();
         }
+
     }
 
 
+
+    @Override
+    protected int getcView() {
+        return R.layout.activity_water_availability;
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -70,33 +85,59 @@ public class WaterAvailabilty extends FragmentActivity implements OnMapReadyCall
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
-        } else {
-            // Show rationale and request permission.
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        Bundle mapViewBundle = outState.getBundle(MAPVIEW_BUNDLE_KEY);
+        if (mapViewBundle == null) {
+            mapViewBundle = new Bundle();
+            outState.putBundle(MAPVIEW_BUNDLE_KEY, mapViewBundle);
         }
 
-        // Add a marker in Sydney and move the camera
-//        if (mLastLocation != null) {
-//            LatLng curLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-//            mMap.addMarker(new MarkerOptions().position(curLocation).title("Location of Water"));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(curLocation));
-//
-//        } else {
-//            LatLng sydney = new LatLng(-34, 151);
-//            mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-//        }
+        mMapView.onSaveInstanceState(mapViewBundle);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMapView.onResume();
     }
 
     @Override
     protected void onStart() {
         mGoogleApiClient.connect();
         super.onStart();
+        mMapView.onStart();
     }
 
     @Override
     protected void onStop() {
         mGoogleApiClient.disconnect();
         super.onStop();
+        mMapView.onStop();
+    }
+
+
+    @Override
+    protected void onPause() {
+        mMapView.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mMapView.onDestroy();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mMapView.onLowMemory();
     }
 
     @Override
@@ -124,7 +165,7 @@ public class WaterAvailabilty extends FragmentActivity implements OnMapReadyCall
         for (Map.Entry<Integer, Report> entry : holder.entrySet()) {
             Report r = entry.getValue();
             LatLng coor = r.getCoordinates();
-            mMap.addMarker(new MarkerOptions().position(coor).title(r.toString()));
+            mMap.addMarker(new MarkerOptions().position(coor).title(r.getWaterType()).snippet(r.getWaterCondition()));
         }
     }
 }
