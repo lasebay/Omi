@@ -21,6 +21,9 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import a404_notfound.sourceappwater.R;
 import a404_notfound.sourceappwater.model.FirbaseUtility;
@@ -43,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     private View mLoginFormView;
     private FirbaseUtility fbinstance;
     private static boolean canContinue;
-
+    private String role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +70,20 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         fbinstance = new FirbaseUtility();
+        fbinstance.getmRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                role = dataSnapshot.child("users").child(fbinstance.getUser()).child("accttype").getValue().toString();
+                FirbaseUtility.setRole(role);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
 
         //Sets event for when Log in button is clicked
         Button mEmailSignInButton = (Button) findViewById(R.id.sign_in_button);
@@ -74,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 attemptLogin();
+
             }
         });
 
@@ -145,6 +163,20 @@ public class LoginActivity extends AppCompatActivity {
                                     mPasswordView.setError("The password is invalid for user");
                                 }
                             } else {
+                                canContinue = true;
+                                fbinstance.getmRef().addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        role = dataSnapshot.child("users").child(fbinstance.getUser()).child("accttype").getValue().toString();
+                                        FirbaseUtility.setRole(role);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+
                                 Intent switchScreen = new Intent(getApplicationContext(), HqActivity.class);
                                 startActivity(switchScreen);
                             }

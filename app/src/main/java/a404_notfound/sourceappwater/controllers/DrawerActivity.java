@@ -11,12 +11,23 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
 import a404_notfound.sourceappwater.R;
+import a404_notfound.sourceappwater.model.FirbaseUtility;
 
 public class DrawerActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private final String[] tabs = {"Home", "User Profile", "Reports", "Find Water","Settings", "Logout", "Submitted Reports"};
+    private String[] user_tabs = {"Home", "User Profile", "Reports", "Find Water","Settings", "Logout", "Submitted Reports"};
+    private String[] worker_tabs = {"Home", "User Profile", "Create User Reports","Create Worker Report"
+            , "Find Water","Settings", "Logout", "Submitted Reports"};
+    private ActionBarDrawerToggle mDrawerToggle;
+    private FirbaseUtility firbaseUtility;
+    private String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +37,19 @@ public class DrawerActivity extends Activity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        mDrawerList.setAdapter(new ArrayAdapter<>(this,
-                R.layout.drawer_list_layout, tabs));
+
+        role = FirbaseUtility.getRole();
+
+
+        if (role != null && role.equals("Worker")){
+            mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                    R.layout.drawer_list_layout, worker_tabs));
+        } else {
+            mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                    R.layout.drawer_list_layout, user_tabs));
+        }
+
+
 
         mDrawerList.setOnItemClickListener(new DrawerActivity.DrawerItemClickListener());
 
@@ -68,17 +90,34 @@ public class DrawerActivity extends Activity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            if (position == 0){
-                startActivity(new Intent(getApplicationContext(), HqActivity.class));
-            } else if (position == 1) {
-                startActivity(new Intent(getApplicationContext(), BaseActivity.class));
-            } else if (position == 5 ) {
-                startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-            } else if (position ==  2){
-                startActivity(new Intent(getApplicationContext(), ReportsActivity.class));
-            } else if (position == 6) {
-                startActivity(new Intent(getApplicationContext(), ViewReportActivity.class));
-
+            if (role.equals("Worker")) {
+                if (position == 0){
+                    startActivity(new Intent(getApplicationContext(), HqActivity.class));
+                } else if (position == 1) {
+                    startActivity(new Intent(getApplicationContext(), BaseActivity.class));
+                } else if (position == 6 ) {
+                    startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+                } else if (position ==  2){
+                    startActivity(new Intent(getApplicationContext(), ReportsActivity.class));
+                } else if (position == 7) {
+                    startActivity(new Intent(getApplicationContext(), ViewReportActivity.class));
+                } else if (position == 4) {
+                    startActivity(new Intent(getApplicationContext(), WaterAvailabilty.class));
+                }
+            } else {
+                if (position == 0){
+                    startActivity(new Intent(getApplicationContext(), HqActivity.class));
+                } else if (position == 1) {
+                    startActivity(new Intent(getApplicationContext(), BaseActivity.class));
+                } else if (position == 5 ) {
+                    startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+                } else if (position ==  2){
+                    startActivity(new Intent(getApplicationContext(), ReportsActivity.class));
+                } else if (position == 6) {
+                    startActivity(new Intent(getApplicationContext(), ViewReportActivity.class));
+                } else if (position == 3) {
+                    startActivity(new Intent(getApplicationContext(), WaterAvailabilty.class));
+                }
             }
         }
     }

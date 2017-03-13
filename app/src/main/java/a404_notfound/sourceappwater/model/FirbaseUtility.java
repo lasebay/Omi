@@ -18,10 +18,12 @@ public class FirbaseUtility {
 
     //Firebase Database Objects
     private DatabaseReference mRef;
-
+    private static DatabaseReference mRefStatic;
+    private static String user;
     // Firebase Authentication Objects
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private static String role;
 
     private static final String TAG = "Info";
 
@@ -46,6 +48,7 @@ public class FirbaseUtility {
         //Set Up Database For Session
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         mRef = database.getReference();
+        mRefStatic = database.getReference();
     }
 
     public void addAuthListner() {
@@ -57,9 +60,21 @@ public class FirbaseUtility {
         }
     }
 
+
+
+    public static void setRole(String roleIn) {
+        role = roleIn;
+    }
+
+    public static String getRole() {
+        return role;
+    }
+
     public DatabaseReference getmRef() {
         return mRef;
     }
+
+    public static DatabaseReference getStaticMRef() {return mRefStatic;}
 
     public void setmRef(DatabaseReference mRef) {
         this.mRef = mRef;
@@ -88,6 +103,8 @@ public class FirbaseUtility {
         return null;
     }
 
+
+    public String getUserEmail(){
     public CharSequence getUserEmail(){
         if (mAuth != null) {
             return mAuth.getCurrentUser().getEmail();
