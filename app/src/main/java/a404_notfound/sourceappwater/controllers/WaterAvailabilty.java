@@ -160,6 +160,10 @@ public class WaterAvailabilty extends DrawerActivity implements OnMapReadyCallba
 
     }
 
+
+    /**
+     * Method Adds All Markers in the holder
+     */
     private void addMarkers() {
         HashMap<Integer, Report> holder = ReportsHolder.getReportList();
         for (Map.Entry<Integer, Report> entry : holder.entrySet()) {

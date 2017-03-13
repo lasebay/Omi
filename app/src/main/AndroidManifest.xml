@@ -61,7 +61,6 @@
         <activity
             android:name=".controllers.WaterAvailabilty"
             android:label="@string/title_activity_water_availabilty" />
-        <activity android:name=".controllers.CreateUserReport"></activity>
     </application>
 
 </manifest>

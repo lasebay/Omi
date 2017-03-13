@@ -36,6 +36,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import a404_notfound.sourceappwater.R;
 import a404_notfound.sourceappwater.model.FirbaseUtility;
@@ -59,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
     private FirbaseUtility fbinstance;
     private static boolean canContinue;
-
+    private String role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +87,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         fbinstance = new FirbaseUtility();
+        fbinstance.getmRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                role = dataSnapshot.child("users").child(fbinstance.getUser()).child("accttype").getValue().toString();
+                FirbaseUtility.setRole(role);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
 
         //Sets event for when Log in button is clicked
         Button mEmailSignInButton = (Button) findViewById(R.id.signin_button);
@@ -91,6 +108,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
                 attemptLogin();
+
             }
         });
 
@@ -165,6 +183,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 canContinue = false;
                             } else {
                                 canContinue = true;
+                                fbinstance.getmRef().addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        role = dataSnapshot.child("users").child(fbinstance.getUser()).child("accttype").getValue().toString();
+                                        FirbaseUtility.setRole(role);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
                                 Intent switchScreen = new Intent(getApplicationContext(), HqActivity.class);
                                 startActivity(switchScreen);
                             }
