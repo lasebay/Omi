@@ -21,7 +21,7 @@ public class ReportsHolder {
      * @param report the report to add the database
      */
     public static void addReport(Report report) {
-        Integer id = Integer.valueOf(i);
+        Integer id = i;
         holder.put(id, report);
         i++;
     }
@@ -48,6 +48,14 @@ public class ReportsHolder {
                     + "\n";
         }
         return list;
+    }
+
+    /**
+     * returns a copy of the reports Data
+     * @return a Sparse array of the reports
+     */
+    public static SparseArray<Report> supplyReports() {
+        return holder;
     }
 
 

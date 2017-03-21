@@ -1,8 +1,14 @@
 package a404_notfound.sourceappwater.controllers;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +16,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,16 +45,28 @@ import a404_notfound.sourceappwater.model.ReportsHolder;
 import a404_notfound.sourceappwater.model.WaterCondition;
 import a404_notfound.sourceappwater.model.WaterType;
 
+/**
+ * Class Written to make user Report Activities
+ */
+public class CreateReportsActivity extends Activity implements OnMapReadyCallback,
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-public class CreateReportsActivity extends Activity {
-
-    private EditText mName;
-    private EditText mCoordinates;
+    private TextView mName;
     private FirbaseUtility fbinstance;
     private Spinner spinner;
     private Spinner spinner2;
     private String waterCondition;
     private String waterType;
+    private String author;
+
+    private MapView mMapView;
+    private GoogleMap mMap;
+    private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
+
+    private GoogleApiClient mGoogleApiClient;
+    private Location mLastLocation;
+    private LatLng mMarkerPosition;
+
 
 
     @Override
@@ -41,8 +74,7 @@ public class CreateReportsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_reports);
 
-        mName = (EditText) findViewById(R.id.name);
-        mCoordinates = (EditText) findViewById(R.id.Coordinates);
+        mName = (TextView) findViewById(R.id.reportAuthor);
         fbinstance = new FirbaseUtility();
 
         Spinner spinner = (Spinner) findViewById(R.id.waterType);
@@ -104,11 +136,48 @@ public class CreateReportsActivity extends Activity {
             }
         });
 
+
+        Bundle mapViewBundle = null;
+        if (savedInstanceState != null) {
+            mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY);
+        }
+        mMapView = (MapView) findViewById(R.id.map);
+        mMapView.onCreate(mapViewBundle);
+
+        mMapView.getMapAsync(this);
+
+        // Create an instance of GoogleAPIClient.
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
+
+        fbinstance.getmRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                author = dataSnapshot.child("users")
+                        .child(fbinstance.getUser())
+                        .child("name")
+                        .getValue()
+                        .toString();
+
+                String authorView = "Author: " + author;
+                mName.setText(authorView);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private Report makeReport() {
         String name = mName.getText().toString();
-        String coordinates = mCoordinates.getText().toString();
         String wt = waterType;
         String wc = waterCondition;
         Calendar c = Calendar.getInstance();
@@ -116,9 +185,115 @@ public class CreateReportsActivity extends Activity {
         String formattedDate = df.format(c.getTime());
 
 
-        if (name != null && coordinates != null) {
-            return new Report(name, coordinates, wt, wc, formattedDate);
+        if (mMarkerPosition != null) {
+            return new Report(name, mMarkerPosition, wt, wc, formattedDate);
         }
         return null;
     }
+
+
+    @Override
+    protected void onStart() {
+        mGoogleApiClient.connect();
+        super.onStart();
+        mMapView.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
+        mMapView.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        mMapView.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mMapView.onDestroy();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mMapView.onLowMemory();
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker marker) {
+                mMarkerPosition = marker.getPosition();
+            }
+
+            @Override
+            public void onMarkerDrag(Marker marker) {
+                mMarkerPosition = marker.getPosition();
+            }
+
+            @Override
+            public void onMarkerDragEnd(Marker marker) {
+                mMarkerPosition = marker.getPosition();
+            }
+        });
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        Bundle mapViewBundle = outState.getBundle(MAPVIEW_BUNDLE_KEY);
+        if (mapViewBundle == null) {
+            mapViewBundle = new Bundle();
+            outState.putBundle(MAPVIEW_BUNDLE_KEY, mapViewBundle);
+        }
+
+        mMapView.onSaveInstanceState(mapViewBundle);
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+        }
+        LatLng curLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+        mMap.addMarker(new MarkerOptions()
+                .position(curLocation)
+                .draggable(true)
+                .title("Location of Water"));
+        mMarkerPosition = curLocation;
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(curLocation));
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
 }
+

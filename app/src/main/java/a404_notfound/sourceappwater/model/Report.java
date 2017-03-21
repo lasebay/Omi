@@ -1,10 +1,13 @@
 package a404_notfound.sourceappwater.model;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Michelle on 2/27/2017.
+ * Base Model to Create a User Report
  */
 
 public class Report {
@@ -14,7 +17,7 @@ public class Report {
     private static int reportNumber = 0;
     private int reportN = reportNumber;
     private String reporter;
-    private String coordinates;
+    private LatLng coordinates;
     private String waterType;
     private String waterCondition;
 
@@ -34,7 +37,8 @@ public class Report {
      * @param waterCondition The suitability of the water for drinking
      * @param date The day the report is made
      */
-    public Report (String reporter, String coordinates, String waterType, String waterCondition, String date) {
+    public Report (String reporter, LatLng coordinates, String waterType
+            , String waterCondition, String date) {
         this.reporter = reporter;
         this.coordinates = coordinates;
         this.waterType = waterType;
@@ -51,7 +55,7 @@ public class Report {
      *
      * @return map containing instance variables
      */
-    public Map<String, Object> toMap() {
+    Map<String, Object> toMap() {
         Map<String, Object> map = new HashMap<>();
         map.put("date", date);
         map.put("repoNum", reportN);
@@ -60,6 +64,30 @@ public class Report {
         map.put("watertype", waterType);
         map.put("watercondition", waterCondition);
         return map;
+    }
+
+    /**
+     * Method that returns coordinates of the report
+     * @return coordinates of the report
+     */
+    public LatLng getCoordinates() {
+        return coordinates;
+    }
+
+    /**
+     *
+     * @return Type of water
+     */
+    public String getWaterType() {
+        return waterType;
+    }
+
+    /**
+     *
+     * @return State the water is in
+     */
+    public String getWaterCondition() {
+        return waterCondition;
     }
 
     /**
