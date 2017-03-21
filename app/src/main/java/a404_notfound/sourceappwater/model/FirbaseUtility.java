@@ -4,8 +4,11 @@ import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,19 +30,36 @@ public class FirbaseUtility {
 
     private static final String TAG = "Info";
 
+    private static String role = "None";
+
     /**
      * Sets up a connection to the Firebase Database
      */
     public FirbaseUtility() {
+        //Set Up Database For Session
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        mRef = database.getReference();
+
         // Set up fire base Authentication and Listener for that authentication
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                final FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    mRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            role = dataSnapshot.child("users").child(user.getUid()).child(
+                                    "accttype").getValue().toString();
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -48,9 +68,11 @@ public class FirbaseUtility {
             }
         };
 
-        //Set Up Database For Session
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        mRef = database.getReference();
+
+    }
+
+    public static String getRole() {
+        return role;
     }
 
     /**

@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import a404_notfound.sourceappwater.R;
+import a404_notfound.sourceappwater.model.FirbaseUtility;
 
 /**
  * Controller responsible for the sliding side menu
@@ -20,7 +21,7 @@ public class DrawerActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private final String[] tabs = {"Home", "User Profile", "Reports", "Find Water","Settings",
-            "Logout", "Submitted Reports"};
+            "Logout", "Submitted Reports", FirbaseUtility.getRole()};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
