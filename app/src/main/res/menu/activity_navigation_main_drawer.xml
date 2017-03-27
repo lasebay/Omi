@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_find_water"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/find_water" />
+        <item
+            android:id="@+id/nav_createReport"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/createReport" />
+        <item
+            android:id="@+id/nav_view_my_reports"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/submmited_reports"/>
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/logout" />
+    </group>
+</menu>

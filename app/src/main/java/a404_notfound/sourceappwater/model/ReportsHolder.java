@@ -7,7 +7,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,6 +20,10 @@ import java.util.Map;
 
 public class ReportsHolder {
     private static SparseArray<Report> holder = new SparseArray<>();
+    private static List<Report> workerReports = new ArrayList<>();
+    private static List<Report> userReports = new ArrayList<>();
+
+
     private static int i = 0;
     private static final FirbaseUtility fbinstance = new FirbaseUtility();
 
@@ -64,6 +70,21 @@ public class ReportsHolder {
         return holder;
     }
 
+    /**
+     *
+     * @return Return the generated list of User Reports
+     */
+    public static List<Report> getUserReports() {
+        return userReports;
+    }
+
+    /**
+     *
+     * @return Return the generated list of Worker Reports
+     */
+    public static List<Report> getWorkerReports() {
+        return workerReports;
+    }
 
     /**
      * Method used to connect to database and show user all reports submitted.
@@ -74,6 +95,8 @@ public class ReportsHolder {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int i = 0;
                 SparseArray<Report> updatedList = new SparseArray<>();
+                workerReports.clear();
+                userReports.clear();
 
                 for(DataSnapshot reportSnapShot : dataSnapshot.getChildren()) {
                     Map<String, Object> reportMap =
@@ -112,10 +135,13 @@ public class ReportsHolder {
 
             r = new WorkerReport(reportType, reporter, latLng,
                     waterType, waterCondition, date, ppm, vpm);
+            r.setId(key);
+            workerReports.add(r);
         } else {
             r = new Report(reportType,reporter,latLng,waterType,waterCondition,date);
+            r.setId(key);
+            userReports.add(r);
         }
-        r.setId(key);
         return r;
 
     }

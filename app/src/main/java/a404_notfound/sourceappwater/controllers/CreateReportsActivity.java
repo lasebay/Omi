@@ -131,7 +131,6 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
 //        mCancelBttn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                //startActivity(new Intent(getActivity().getApplicationContext(), ReportsActivity.class));
 //            }
 //        });
         Button mCreateReportbttn = (Button) view.findViewById(R.id.createReport);
@@ -145,7 +144,6 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
                     fbinstance.addReport(fbinstance.getmRef(), rep);
                 }
 
-                //startActivity(new Intent(getActivity().getApplicationContext(), NavigationMain.class));
 
             }
         });
@@ -193,7 +191,7 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
 
 
     private Report makeReport() {
-        String name = mName.getText().toString();
+        String name = author;
         String wt = waterType;
         String wc = waterCondition;
         Calendar c = Calendar.getInstance();
@@ -267,7 +265,8 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
             }
         });
 
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
         }
@@ -288,7 +287,8 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                     mGoogleApiClient);

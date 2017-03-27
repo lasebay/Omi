@@ -161,4 +161,11 @@ public class Report {
         return id;
     }
 
+    /**
+     *
+     * @return Return the type of report
+     */
+    public String getReportType() {
+        return reportType;
+    }
 }

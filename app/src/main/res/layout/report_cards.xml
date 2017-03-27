@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="1.3in"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="monospace"
+                    android:text="@string/name"
+                    android:textSize="16sp" />
+
+                <!--<TextView-->
+                <!--android:id="@+id/coordinates"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:fontFamily="monospace"-->
+                <!--android:text="@string/coordinates" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/date"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:fontFamily="monospace"-->
+                <!--android:text="date" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/condition"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:fontFamily="monospace"-->
+                <!--android:text="waterCondition" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/type"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:fontFamily="monospace"-->
+                <!--android:text="WaterType" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/reportId"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="id" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/vpm"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="TextView" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/ppm"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="TextView" />-->
+
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
