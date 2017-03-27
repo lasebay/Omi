@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
@@ -87,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                if ((id == R.id.login) || (id == EditorInfo.IME_NULL)) {
                     attemptSignUp();
                     return true;
                 }
@@ -97,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
         mPasswordReEntry.setOnEditorActionListener(new TextView.OnEditorActionListener()  {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                if ((id == R.id.login) || (id == EditorInfo.IME_NULL)) {
                     attemptSignUp();
                     return true;
                 }
@@ -196,7 +197,7 @@ public class RegisterActivity extends AppCompatActivity {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(Task<AuthResult> task) {
+                        public void onComplete(@NonNull Task<AuthResult> task) {
                             Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
                             // If sign in fails, display a message to the user. If sign in succeeds

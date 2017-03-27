@@ -5,9 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 
 import a404_notfound.sourceappwater.R;
 
+/**
+ * Opening Activity for app
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override
@@ -15,6 +19,8 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_welcome);
+
+        Button login = (Button) findViewById(R.id.login_button);
     }
 
     /**

@@ -1,6 +1,7 @@
 package a404_notfound.sourceappwater.controllers;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -60,7 +61,7 @@ public class RegistrationActivity extends AppCompatActivity
         mName.setOnEditorActionListener(new TextView.OnEditorActionListener()  {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                return (id == R.id.login || id == EditorInfo.IME_NULL);
+                return ((id == R.id.login) || (id == EditorInfo.IME_NULL));
             }
         });
 
@@ -74,7 +75,7 @@ public class RegistrationActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onAuthStateChanged(FirebaseAuth firebaseAuth) {
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
@@ -132,12 +133,16 @@ public class RegistrationActivity extends AppCompatActivity
     }
 
 
+    /**
+     *Method responsible for creating the user instance
+     * @param ucas the Tyoe of user, Worker, User, Manaager, etc.
+     */
     private void createProfile(String ucas) {
         String name = mName.getText().toString();
         String a = "/users/";
         Map<String, Object> values = new HashMap<>();
 
-        if (ucas.equals("Administrator")) {
+        if (("Administrator").equals(ucas)) {
             Admin e = new Admin(name);
             String nme = e.getUsername();
             String addrs = e.getAddress();
@@ -148,7 +153,7 @@ public class RegistrationActivity extends AppCompatActivity
             values.put(a + uid + "/coor/", coor);
             values.put(a + uid + "/accttype/", e.toString());
             mRef.updateChildren(values);
-        } else if(ucas.equals("Worker")) {
+        } else if(("Worker").equals(ucas)) {
             Worker e = new Worker(name);
             String nme = e.getUsername();
             String addrs = e.getAddress();
@@ -159,7 +164,7 @@ public class RegistrationActivity extends AppCompatActivity
             values.put(a + uid + "/coor/", coor);
             values.put(a + uid + "/accttype/", e.toString());
             mRef.updateChildren(values);
-        } else if (ucas.equals("Manager")) {
+        } else if (("Manager").equals(ucas)) {
             Manager e = new Manager(name);
             String nme = e.getUsername();
             String addrs = e.getAddress();

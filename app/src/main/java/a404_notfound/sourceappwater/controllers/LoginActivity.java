@@ -1,6 +1,7 @@
 package a404_notfound.sourceappwater.controllers;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -47,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
 
 
@@ -145,7 +148,8 @@ public class LoginActivity extends AppCompatActivity {
                                     mPasswordView.setError("The password is invalid for user");
                                 }
                             } else {
-                                Intent switchScreen = new Intent(getApplicationContext(), HqActivity.class);
+                                Intent switchScreen = new Intent(getApplicationContext(),
+                                        NavigationMain.class);
                                 startActivity(switchScreen);
                             }
                         }
@@ -179,7 +183,7 @@ public class LoginActivity extends AppCompatActivity {
      * Callback received when a permissions request has been completed.
      */
     @Override
-    public void onRequestPermissionsResult(int requestCode,  String[] permissions,
-                                           int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
     }
 }

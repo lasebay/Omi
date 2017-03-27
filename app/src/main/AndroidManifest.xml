@@ -10,7 +10,7 @@
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -19,7 +19,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.Light">
         <activity
             android:name=".controllers.WelcomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -43,8 +43,6 @@
         <activity android:name=".controllers.EditInfoActivity" />
         <activity android:name=".controllers.DrawerActivity" />
         <activity android:name=".controllers.ReportsActivity" />
-        <activity android:name=".controllers.CreateReportsActivity" />
-        <activity android:name=".controllers.ViewReportActivity" />
         <!--
              The API key for Google Maps-based APIs
              is defined as a string resource.
@@ -61,9 +59,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+
         <activity
-            android:name=".controllers.WaterAvailibilityMap"
-            android:label="@string/title_activity_water_availibility_map"></activity>
+            android:name=".controllers.NavigationMain"
+            android:label="@string/title_activity_navigation_main"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

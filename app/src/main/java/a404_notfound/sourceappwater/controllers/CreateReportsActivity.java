@@ -8,8 +8,11 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,6 +31,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -48,16 +52,16 @@ import a404_notfound.sourceappwater.model.WaterType;
 /**
  * Class Written to make user Report Activities
  */
-public class CreateReportsActivity extends Activity implements OnMapReadyCallback,
+public class CreateReportsActivity extends Fragment implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private TextView mName;
-    private FirbaseUtility fbinstance;
+    protected FirbaseUtility fbinstance;
     private Spinner spinner;
     private Spinner spinner2;
-    private String waterCondition;
-    private String waterType;
-    private String author;
+    protected String waterCondition;
+    protected String waterType;
+    protected String author;
 
     private MapView mMapView;
     private GoogleMap mMap;
@@ -65,21 +69,31 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
 
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
-    private LatLng mMarkerPosition;
-
+    protected LatLng mMarkerPosition;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_reports);
+    }
 
-        mName = (TextView) findViewById(R.id.reportAuthor);
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_create_reports, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+//        mName = (TextView) view.findViewById(R.id.reportAuthor);
         fbinstance = new FirbaseUtility();
 
-        Spinner spinner = (Spinner) findViewById(R.id.waterType);
+        Spinner spinner = (Spinner) view.findViewById(R.id.waterType);
         ArrayAdapter<WaterType> adapter = new ArrayAdapter(
-                this,android.R.layout.simple_spinner_item,
+                getActivity(),android.R.layout.simple_spinner_item,
                 new ArrayList<>(Arrays.asList(WaterType.values())));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -95,9 +109,9 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
             }
         });
 
-        Spinner spinner2 = (Spinner) findViewById(R.id.waterCondition);
+        Spinner spinner2 = (Spinner) view.findViewById(R.id.waterCondition);
         SpinnerAdapter adapter2 = new ArrayAdapter(
-                this,android.R.layout.simple_spinner_item,
+                getActivity(),android.R.layout.simple_spinner_item,
                 new ArrayList<>(Arrays.asList(WaterCondition.values())));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
@@ -113,25 +127,25 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
             }
         });
 
-        Button mCancelBttn = (Button) findViewById(R.id.reportCancelBttn);
-        mCancelBttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ReportsActivity.class));
-            }
-        });
-        Button mCreateReportbttn = (Button) findViewById(R.id.createReport);
+//        Button mCancelBttn = (Button) view.findViewById(R.id.reportCancelBttn);
+//        mCancelBttn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //startActivity(new Intent(getActivity().getApplicationContext(), ReportsActivity.class));
+//            }
+//        });
+        Button mCreateReportbttn = (Button) view.findViewById(R.id.createReport);
         mCreateReportbttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Report rep = makeReport();
 
                 if (rep != null) {
-                    ReportsHolder.addReport(rep);
+                    //ReportsHolder.addReport(rep);
                     fbinstance.addReport(fbinstance.getmRef(), rep);
                 }
 
-                startActivity(new Intent(getApplicationContext(), ViewReportActivity.class));
+                //startActivity(new Intent(getActivity().getApplicationContext(), NavigationMain.class));
 
             }
         });
@@ -141,14 +155,14 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
         if (savedInstanceState != null) {
             mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY);
         }
-        mMapView = (MapView) findViewById(R.id.map);
+        mMapView = (MapView) view.findViewById(R.id.map);
         mMapView.onCreate(mapViewBundle);
 
         mMapView.getMapAsync(this);
 
         // Create an instance of GoogleAPIClient.
         if (mGoogleApiClient == null) {
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
+            mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
                     .addConnectionCallbacks(this)
                     .addOnConnectionFailedListener(this)
                     .addApi(LocationServices.API)
@@ -165,7 +179,7 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
                         .toString();
 
                 String authorView = "Author: " + author;
-                mName.setText(authorView);
+//                mName.setText(authorView);
             }
 
             @Override
@@ -175,6 +189,8 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
         });
 
     }
+
+
 
     private Report makeReport() {
         String name = mName.getText().toString();
@@ -186,40 +202,40 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
 
 
         if (mMarkerPosition != null) {
-            return new Report(name, mMarkerPosition, wt, wc, formattedDate);
+            return new Report("User",name, mMarkerPosition, wt, wc, formattedDate);
         }
         return null;
     }
 
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         mGoogleApiClient.connect();
         super.onStart();
         mMapView.onStart();
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         mGoogleApiClient.disconnect();
         super.onStop();
         mMapView.onStop();
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         mMapView.onResume();
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         mMapView.onPause();
         super.onPause();
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         mMapView.onDestroy();
         super.onDestroy();
     }
@@ -251,7 +267,7 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
             }
         });
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
         }
@@ -272,7 +288,7 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                     mGoogleApiClient);
@@ -294,6 +310,10 @@ public class CreateReportsActivity extends Activity implements OnMapReadyCallbac
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    protected LatLng getmMarkerPosition() {
+        return mMarkerPosition;
     }
 }
 

@@ -18,6 +18,11 @@ public class Report {
     private int reportN = reportNumber;
     private String reporter;
     private LatLng coordinates;
+    private double lat;
+    private double lng;
+    private String id;
+    private String reportType;
+
     private String waterType;
     private String waterCondition;
 
@@ -30,21 +35,24 @@ public class Report {
     /**
      *  Constructor for Report.
      *  Used when users want to report a new water source.
-     *
+     * @param reportType Type of report
      * @param reporter Name of user making the report
      * @param coordinates The longitude and latitude of the water source
      * @param waterType Denotes what is the source of the water
      * @param waterCondition The suitability of the water for drinking
      * @param date The day the report is made
      */
-    public Report (String reporter, LatLng coordinates, String waterType
+    public Report (String reportType, String reporter, LatLng coordinates, String waterType
             , String waterCondition, String date) {
         this.reporter = reporter;
         this.coordinates = coordinates;
         this.waterType = waterType;
         this.waterCondition = waterCondition;
         this.date = date;
+        lat = coordinates.latitude;
+        lng = coordinates.longitude;
         reportN = reportNumber;
+        this.reportType = reportType;
         //add date and time from fire base as default.
         reportNumber++;
     }
@@ -56,13 +64,18 @@ public class Report {
      * @return map containing instance variables
      */
     Map<String, Object> toMap() {
+        double lat = coordinates.latitude;
+        double lng = coordinates.longitude;
         Map<String, Object> map = new HashMap<>();
+        map.put("type", reportType);
         map.put("date", date);
         map.put("repoNum", reportN);
         map.put("reporter", reporter);
-        map.put("coor", coordinates);
         map.put("watertype", waterType);
         map.put("watercondition", waterCondition);
+        map.put("lat", lat);
+        map.put("lng", lng);
+
         return map;
     }
 
@@ -71,7 +84,7 @@ public class Report {
      * @return coordinates of the report
      */
     public LatLng getCoordinates() {
-        return coordinates;
+        return new LatLng(lat,lng);
     }
 
     /**
@@ -91,6 +104,22 @@ public class Report {
     }
 
     /**
+     *
+     * @return the date the report was made
+     */
+    String getDate() {
+        return date;
+    }
+
+    /**
+     *
+     * @return the author of the report
+     */
+    String getReporter() {
+        return reporter;
+    }
+
+    /**
      * Formats the report's information in this order:
      *  Date: The day the report was made
      *  Report number: The unique ID# for the report
@@ -103,13 +132,33 @@ public class Report {
      * @return String representation of the report
      */
     public String toString() {
-        return "Date: " + date + "\n"
+        return "Report Type: " + reportType
+                    +"Date: " + date + "\n"
                     + "Report Number: " + reportN + "\n"
                     + "Reporter: " + reporter + "\n"
                     + "Coordinates : " + coordinates
                     + "\n Water Type: " + waterType
                     + "\n Water Condition: " + waterCondition
                     + "\n";
+    }
+
+    /**
+     * Method for Firbase to give the string key
+     * @param id the id contained in firebase
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
+     * Method to retrieve that id
+     * @return string contining the firebase id
+     */
+    public String getId() {
+        if (id.isEmpty()) {
+            return "No Id Supplied";
+        }
+        return id;
     }
 
 }

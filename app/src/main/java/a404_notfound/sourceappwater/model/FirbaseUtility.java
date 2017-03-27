@@ -71,6 +71,10 @@ public class FirbaseUtility {
 
     }
 
+    /**
+     * Returns the users status in terms of worker, user, manager, etc.
+     * @return the role
+     */
     public static String getRole() {
         return role;
     }
@@ -184,10 +188,9 @@ public class FirbaseUtility {
         String key = reportLocation.push().getKey();
         Map<String, Object> reportvalues = report.toMap();
 
-        Map<String, Object> updates = new HashMap<>();
-        updates.put("/reports/" + key, reportvalues);
 
-        mRefIn.updateChildren(updates);
+        reportLocation.child(key).setValue(reportvalues);
 
     }
+
 }
