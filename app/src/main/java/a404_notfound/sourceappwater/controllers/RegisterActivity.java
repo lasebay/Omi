@@ -238,10 +238,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     /**
      * Dummy method for now
-     * @param password passowrd to be givin in the code
+     * @param password password to be given in the code
      * @return if the password is valid
      */
-    private boolean isPasswordValid(String password) {
+    private boolean isPasswordValid(CharSequence password) {
         return (password.length() > 4);
     }
 
