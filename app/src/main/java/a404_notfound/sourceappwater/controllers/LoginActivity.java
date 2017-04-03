@@ -143,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Log.w(TAG, "signInWithEmail", task.getException());
                                 Throwable e = task.getException();
                                 if(e instanceof FirebaseAuthInvalidUserException) {
-                                    mEmailView.setError("This is email is not registered");
+                                    mEmailView.setError("This email is not registered");
                                 } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
                                     mPasswordView.setError("The password is invalid for user");
                                 }
