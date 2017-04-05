@@ -2,7 +2,6 @@ package a404_notfound.sourceappwater.model;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,7 @@ import a404_notfound.sourceappwater.R;
 public class ReportViewAdapter extends RecyclerView.Adapter<ReportViewAdapter.ReportViewHolder> {
     //private SparseArray<Report> holder;
     private List<Report> userReport;
-    private List<Report> holder;
+    private final List<Report> holder;
 
     /**
      * Adapter manages the large dataset of reports
@@ -43,7 +42,7 @@ public class ReportViewAdapter extends RecyclerView.Adapter<ReportViewAdapter.Re
     public void onBindViewHolder(ReportViewHolder reportViewHolder, int position) {
 
         if (("Worker").equals(holder.get(position).getReportType())
-                && (("Manager").equals(FirbaseUtility.getRole()))) {
+                && (("Manager").equals(FirebaseUtility.getRole()))) {
             reportViewHolder.author.setText(holder.get(position).toString());
         } else {
             reportViewHolder.author.setText(holder.get(position).toString());
@@ -61,8 +60,8 @@ public class ReportViewAdapter extends RecyclerView.Adapter<ReportViewAdapter.Re
     }
 
     static class ReportViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
-        TextView author;
+        final CardView cardView;
+        final TextView author;
         TextView date;
         TextView waterType;
         TextView waterCondition;

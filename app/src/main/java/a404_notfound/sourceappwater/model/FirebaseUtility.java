@@ -10,7 +10,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -19,7 +18,7 @@ import java.util.Map;
  * Deals with everything Firebase related
  */
 
-public class FirbaseUtility {
+public class FirebaseUtility {
 
     //Firebase Database Objects
     private DatabaseReference mRef;
@@ -35,7 +34,7 @@ public class FirbaseUtility {
     /**
      * Sets up a connection to the Firebase Database
      */
-    public FirbaseUtility() {
+    public FirebaseUtility() {
         //Set Up Database For Session
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         mRef = database.getReference();

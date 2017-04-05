@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 import a404_notfound.sourceappwater.model.ReportViewAdapter;
 import a404_notfound.sourceappwater.model.ReportsHolder;
 
@@ -39,7 +39,7 @@ public class ViewReportActivity extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         ReportViewAdapter adapter;
-        if (("Manager").equals(FirbaseUtility.getRole())) {
+        if (("Manager").equals(FirebaseUtility.getRole())) {
              adapter = new ReportViewAdapter(ReportsHolder.getWorkerReports());
         } else {
             adapter = new ReportViewAdapter(ReportsHolder.getUserReports());

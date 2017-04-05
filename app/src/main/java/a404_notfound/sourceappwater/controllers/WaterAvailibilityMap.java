@@ -2,11 +2,10 @@ package a404_notfound.sourceappwater.controllers;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -16,11 +15,9 @@ import android.view.ViewGroup;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -35,7 +32,6 @@ public class WaterAvailibilityMap extends Fragment implements OnMapReadyCallback
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleApiClient mGoogleApiClient;
-
     private MapView mMapView;
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
 
@@ -80,13 +76,11 @@ public class WaterAvailibilityMap extends Fragment implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        GoogleMap mMap = googleMap;
-
 
         if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            mMap.setMyLocationEnabled(true);
+            googleMap.setMyLocationEnabled(true);
         }
 
         SparseArray<Report> spa = ReportsHolder.supplyReports();
@@ -94,7 +88,7 @@ public class WaterAvailibilityMap extends Fragment implements OnMapReadyCallback
             Report r = spa.valueAt(i);
             if(r.getCoordinates() != null) {
                 LatLng position = r.getCoordinates();
-                mMap.addMarker(new MarkerOptions()
+                googleMap.addMarker(new MarkerOptions()
                         .position(position)
                         .title(r.getWaterType())
                         .snippet(r.getWaterCondition()));
@@ -124,7 +118,7 @@ public class WaterAvailibilityMap extends Fragment implements OnMapReadyCallback
     public void onStart() {
         mGoogleApiClient.connect();
         super.onStart();
-        mMapView.onStart();;
+        mMapView.onStart();
     }
 
     @Override

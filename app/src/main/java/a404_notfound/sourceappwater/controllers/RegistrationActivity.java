@@ -1,9 +1,9 @@
 package a404_notfound.sourceappwater.controllers;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,14 +15,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import a404_notfound.sourceappwater.R;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +23,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import a404_notfound.sourceappwater.model.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import a404_notfound.sourceappwater.R;
+import a404_notfound.sourceappwater.model.Admin;
+import a404_notfound.sourceappwater.model.Manager;
+import a404_notfound.sourceappwater.model.RegisteredUser;
+import a404_notfound.sourceappwater.model.Worker;
 
 /**
  * Controller for creating a new user account
@@ -123,7 +124,7 @@ public class RegistrationActivity extends AppCompatActivity
         mAuth.addAuthStateListener(mAuthListener);
     }
 
-    //Stop the firbase Listener
+    //Stop the firebase Listener
     @Override
     public void onStop() {
         super.onStop();
@@ -135,7 +136,7 @@ public class RegistrationActivity extends AppCompatActivity
 
     /**
      *Method responsible for creating the user instance
-     * @param ucas the Tyoe of user, Worker, User, Manaager, etc.
+     * @param ucas the Type of user, Worker, User, Manaager, etc.
      */
     private void createProfile(String ucas) {
         String name = mName.getText().toString();

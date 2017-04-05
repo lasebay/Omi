@@ -14,20 +14,20 @@ public class RegisteredUser {
     private String username;
     private String address;
     private String coordinates;
-    private int loginAttemps;
+    private int loginAttempts;
 
     /**
      * Generic constructor
      */
-    public RegisteredUser() {
+    RegisteredUser() {
         username = "No Name";
         coordinates = "None";
         address = "None";
-        loginAttemps = 0;
+        loginAttempts = 0;
     }
 
     /**
-     * Contructor for making an actual account
+     * Constructor for making an actual account
      *
      * @param name username of account user
      */
@@ -77,17 +77,17 @@ public class RegisteredUser {
      *
      * @return the number of failed login attempts for the user
      */
-    public int getLoginAttemps() {
-        return loginAttemps;
+    public int getLoginAttempts() {
+        return loginAttempts;
     }
 
     /**
      * Setter for login attempts
      *
-     * @param loginAttemps the new number of login attempts
+     * @param loginAttempts the new number of login attempts
      */
-    public void setLoginAttemps(int loginAttemps) {
-        this.loginAttemps = loginAttemps;
+    public void setLoginAttempts(int loginAttempts) {
+        this.loginAttempts = loginAttempts;
     }
 
     /**
@@ -123,7 +123,7 @@ public class RegisteredUser {
         ret.put("name", username);
         ret.put("addrs", address);
         ret.put("coord", coordinates);
-        ret.put("logAtmps", loginAttemps);
+        ret.put("logAtmps", loginAttempts);
 
         return ret;
     }

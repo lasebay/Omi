@@ -25,7 +25,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 
 /**
  * A login screen that offers login via email/password.
@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private FirbaseUtility fbinstance;
+    private FirebaseUtility fbinstance;
     private static boolean canContinue;
 
     @Override
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                if ((id == R.id.login) || (id == EditorInfo.IME_NULL)) {
                     attemptLogin();
                     return true;
                 }
@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        fbinstance = new FirbaseUtility();
+        fbinstance = new FirebaseUtility();
 
         //Sets event for when Log in button is clicked
         Button mEmailSignInButton = (Button) findViewById(R.id.sign_in_button);
@@ -169,7 +169,7 @@ public class LoginActivity extends AppCompatActivity {
         fbinstance.addAuthListner();
     }
 
-    //Stop the firbase Listener
+    //Stop the Firebase Listener
     @Override
     public void onStop() {
         super.onStop();

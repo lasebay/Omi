@@ -20,12 +20,12 @@ import java.util.Map;
 
 public class ReportsHolder {
     private static SparseArray<Report> holder = new SparseArray<>();
-    private static List<Report> workerReports = new ArrayList<>();
-    private static List<Report> userReports = new ArrayList<>();
+    private static final List<Report> workerReports = new ArrayList<>();
+    private static final List<Report> userReports = new ArrayList<>();
 
 
     private static int i = 0;
-    private static final FirbaseUtility fbinstance = new FirbaseUtility();
+    private static final FirebaseUtility fbinstance = new FirebaseUtility();
 
     /**
      *
