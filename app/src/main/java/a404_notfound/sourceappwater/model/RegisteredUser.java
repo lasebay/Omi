@@ -51,6 +51,9 @@ public class RegisteredUser {
      * @param username the new username
      */
     public void setUsername(String username) {
+        if (username == null) {
+            throw new IllegalArgumentException();
+        }
         this.username = username;
     }
 
@@ -69,6 +72,9 @@ public class RegisteredUser {
      * @param coordinates the new location of the user
      */
     public void setCoordinates(String coordinates) {
+        if (coordinates == null) {
+            throw new IllegalArgumentException();
+        }
         this.coordinates = coordinates;
     }
 
@@ -105,6 +111,9 @@ public class RegisteredUser {
      * @param address the new address of the user
      */
     public void setAddress(String address) {
+        if (address == null) {
+            throw new IllegalArgumentException();
+        }
         this.address = address;
     }
 

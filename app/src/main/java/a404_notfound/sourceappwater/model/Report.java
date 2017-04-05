@@ -115,9 +115,11 @@ public class Report {
      *
      * @return the author of the report
      */
-    String getReporter() {
+    public String getReporter() {
         return reporter;
     }
+
+
 
     /**
      * Formats the report's information in this order:
@@ -161,6 +163,7 @@ public class Report {
         return id;
     }
 
+
     /**
      *
      * @return Return the type of report
@@ -168,4 +171,47 @@ public class Report {
     public String getReportType() {
         return reportType;
     }
+
+
+    //Dummy method for testing Junits
+
+    /**
+     * @param name name of the reporter
+     */
+
+    public void setName(String name){
+        if(name == null){
+            throw new IllegalArgumentException("name cannot be null");
+        }
+        this.reporter = name;
+
+    }
+
+    /**
+     *
+     * @param waterCondition watercondition
+     */
+
+    public void setWaterCondition(String waterCondition){
+        if(waterCondition == null){
+            throw new IllegalArgumentException("date cannot be null");
+        }
+        this.waterCondition = waterCondition;
+    }
+
+    /**
+     *
+     * @param waterType watertype
+     */
+
+    public void setWaterType(String waterType){
+        if(waterType == null){
+            throw new IllegalArgumentException("water type cannot be null");
+        }
+
+        this.waterType = waterType;
+    }
+
+
+
 }

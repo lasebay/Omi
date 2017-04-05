@@ -9,7 +9,8 @@ import java.util.Map;
  */
 
 public class WorkerReport extends Report {
-    private final long ppm;
+    //ppm is not final anymore
+    private  long ppm;
     private final long vpm;
     public WorkerReport(String reportType, String reporter, LatLng coordinates, String waterType
             , String waterCondition, String date, long ppm, long vpm) {
@@ -32,5 +33,19 @@ public class WorkerReport extends Report {
         s = s + "PPM: " + ppm + "/n";
         s = s + "VPM: " + vpm + "/n";
         return s;
+    }
+
+
+    //dummy method for Junit Testing
+    public long getPpm(){
+        return ppm;
+    }
+
+    public void setPpm(long ppm1) {
+        if (ppm < 0) {
+            throw new IllegalArgumentException("PPM cannot be negative");
+        }
+
+        this.ppm = ppm1;
     }
 }
