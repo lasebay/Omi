@@ -24,10 +24,13 @@ import com.google.firebase.database.ValueEventListener;
 import a404_notfound.sourceappwater.R;
 import a404_notfound.sourceappwater.model.FirebaseUtility;
 
+/**
+ * The main page that navigates the App
+ */
 public class NavigationMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private final WaterAvailibilityMap wap = new WaterAvailibilityMap();
+    private final WaterAvailabilityMap wap = new WaterAvailabilityMap();
     private final ViewReportActivity vrp = new ViewReportActivity();
     private final CreateReportsActivity crp = new CreateReportsActivity();
     private final FirebaseUtility fbinstance = new FirebaseUtility();
@@ -128,7 +131,7 @@ public class NavigationMain extends AppCompatActivity
 
     /**
      * Switches the screen based on which tab is selected
-     * @param id
+     * @param id id that is being passed in
      */
     private void displaySelected(int id) {
         Fragment fragment = null;

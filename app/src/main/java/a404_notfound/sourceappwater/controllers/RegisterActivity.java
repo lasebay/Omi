@@ -105,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         });
 
-        Button cancel = (Button) findViewById(R.id.cancl_registration);
+        Button cancel = (Button) findViewById(R.id.cancel_registration);
         cancel.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -227,7 +227,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     /**
      * Dummy method for now
-     * @param password password to be givin in the code
+     * @param password password to be giving in the code
      * @return if the password is valid
      */
     private boolean isPasswordValid(String password) {

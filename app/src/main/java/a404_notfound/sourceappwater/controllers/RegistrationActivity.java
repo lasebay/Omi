@@ -136,7 +136,7 @@ public class RegistrationActivity extends AppCompatActivity
 
     /**
      *Method responsible for creating the user instance
-     * @param ucas the Type of user, Worker, User, Manaager, etc.
+     * @param ucas the Type of user, Worker, User, Manager, etc.
      */
     private void createProfile(String ucas) {
         String name = mName.getText().toString();

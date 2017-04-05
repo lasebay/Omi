@@ -25,7 +25,7 @@ public class ReportViewAdapter extends RecyclerView.Adapter<ReportViewAdapter.Re
 
     /**
      * Adapter manages the large dataset of reports
-     * @param holder the list of all the currnet reports
+     * @param holder the list of all the current reports
      */
     public ReportViewAdapter(List<Report> holder) {
         this.holder = holder;

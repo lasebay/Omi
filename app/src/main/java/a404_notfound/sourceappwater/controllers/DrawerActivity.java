@@ -85,7 +85,7 @@ public class DrawerActivity extends Activity {
                 startActivity(new Intent(getApplicationContext(), ViewReportActivity.class));
 
             } else if (position == 3) {
-                startActivity(new Intent(getApplicationContext(), WaterAvailibilityMap.class));
+                startActivity(new Intent(getApplicationContext(), WaterAvailabilityMap.class));
             }
         }
     }

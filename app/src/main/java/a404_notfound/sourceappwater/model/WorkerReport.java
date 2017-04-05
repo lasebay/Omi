@@ -11,6 +11,18 @@ import java.util.Map;
 public class WorkerReport extends Report {
     private final long ppm;
     private final long vpm;
+
+    /**
+     *
+     * @param reportType the report type that is being passed in
+     * @param reporter  the registered user who is reporting
+     * @param coordinates   the coordinate of the user
+     * @param waterType water type that is being reported
+     * @param waterCondition    condition of the water
+     * @param date the date
+     * @param ppm the ppm being passed in
+     * @param vpm the vpm being passed in
+     */
     public WorkerReport(String reportType, String reporter, LatLng coordinates, String waterType
             , String waterCondition, String date, long ppm, long vpm) {
         super("Worker",reporter, coordinates, waterType, waterCondition, date);

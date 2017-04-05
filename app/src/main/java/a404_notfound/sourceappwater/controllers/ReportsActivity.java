@@ -25,8 +25,8 @@ public class ReportsActivity extends DrawerActivity {
             }
         });
 
-        Button createreport = (Button) findViewById(R.id.createreport);
-        createreport.setOnClickListener(new View.OnClickListener() {
+        Button createReport = (Button) findViewById(R.id.createReport);
+        createReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent switchScreen = new Intent(getApplicationContext(),

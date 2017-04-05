@@ -66,19 +66,19 @@ public class EditInfoActivity extends DrawerActivity {
 
         mName.setError(null);
 
-        if (name == null) {
+        if (name == "") {
             cancel = true;
             focusView = mName;
             mName.setError("This field cannot be empty");
         }
 
-        if (address == null) {
+        if (address == "") {
             cancel = true;
             focusView = mAddrs;
             mAddrs.setError("This field cannot be empty");
         }
 
-        if (coordinates == null) {
+        if (coordinates == "") {
             cancel = true;
             focusView = mCoord;
             mCoord.setError("This field cannot be empty");
