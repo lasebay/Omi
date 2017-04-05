@@ -4,82 +4,93 @@
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="1.3in"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:cardBackgroundColor="@color/colorAccent"
+    app:cardCornerRadius="5dp"
+    app:layout_collapseParallaxMultiplier="1.0">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/cardview_light_background"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp">
 
-        <ScrollView
+        <TextView
+            android:id="@+id/reportId"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/report_id"
+            android:textSize="16sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:text="@string/reporter"
+            android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/author"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="monospace"
-                    android:text="@string/name"
-                    android:textSize="16sp" />
+        <TextView
+            android:id="@+id/coordinates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:text="@string/coordinates"
+            android:textSize="16sp" />
 
-                <!--<TextView-->
-                <!--android:id="@+id/coordinates"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:fontFamily="monospace"-->
-                <!--android:text="@string/coordinates" />-->
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:text="@string/date"
+            android:textSize="16sp" />
 
-                <!--<TextView-->
-                <!--android:id="@+id/date"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:fontFamily="monospace"-->
-                <!--android:text="date" />-->
+        <TextView
+            android:id="@+id/condition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:text="@string/water_cond"
+            android:textSize="16sp" />
 
-                <!--<TextView-->
-                <!--android:id="@+id/condition"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:fontFamily="monospace"-->
-                <!--android:text="waterCondition" />-->
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:text="@string/water_type"
+            android:textSize="16sp" />
 
-                <!--<TextView-->
-                <!--android:id="@+id/type"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:fontFamily="monospace"-->
-                <!--android:text="WaterType" />-->
+        <TextView
+            android:id="@+id/vpm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vpm"
+            android:textSize="16sp" />
 
-                <!--<TextView-->
-                <!--android:id="@+id/reportId"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="id" />-->
+        <TextView
+            android:id="@+id/ppm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ppm"
+            android:textSize="16sp" />
 
-                <!--<TextView-->
-                <!--android:id="@+id/vpm"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="TextView" />-->
+    </LinearLayout>
 
-                <!--<TextView-->
-                <!--android:id="@+id/ppm"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="TextView" />-->
-
-            </LinearLayout>
-        </ScrollView>
-
-    </RelativeLayout>
 </android.support.v7.widget.CardView>
