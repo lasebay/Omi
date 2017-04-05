@@ -36,6 +36,8 @@ public class NavigationMain extends AppCompatActivity
     private CreateReportsActivity crp = new CreateReportsActivity();
     private FirbaseUtility fbinstance = new FirbaseUtility();
     private CreateWorkerReport crwp = new CreateWorkerReport();
+    private ManagerViewReport mvp = new ManagerViewReport();
+    private UserWorkerViewReport uwvp = new UserWorkerViewReport();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,7 +151,11 @@ public class NavigationMain extends AppCompatActivity
                 fragment = crp;
             }
         } else if (id == R.id.nav_view_my_reports) {
-            fragment = new ViewReportActivity();
+            if (("Manager").equals(FirbaseUtility.getRole())) {
+                fragment = mvp;
+            } else {
+                fragment = uwvp;
+            }
         } else if (id == R.id.nav_logout) {
             Intent switchScreen = new Intent(getApplicationContext(), WelcomeActivity.class);
             startActivity(switchScreen);

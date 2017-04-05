@@ -111,7 +111,7 @@ public class RegistrationActivity extends AppCompatActivity
                 //DatabaseReference mRefChild = mRef.child(mAuth.getCurrentUser().getUid());
                 createProfile((String) spinner.getSelectedItem());
                 //mRefChild.setValue(tpe);
-                Intent switchScreen = new Intent(getApplicationContext(), HqActivity.class);
+                Intent switchScreen = new Intent(getApplicationContext(), NavigationMain.class);
                 startActivity(switchScreen);
             }
         });

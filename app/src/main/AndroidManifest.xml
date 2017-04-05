@@ -65,7 +65,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".controllers.CurrentUsersReports" />
         <activity android:name=".controllers.HistoricalReportCriteria" />
-        <activity android:name=".controllers.ViewHistoricalReport"></activity>
+        <activity android:name=".controllers.ViewHistoricalReport" />
+        <activity android:name=".controllers.UserWorkerViewReport" />
+        <activity android:name=".controllers.ManagerViewReport" />
+        <activity android:name=".controllers.CurrentWorkerReports" />
+        <activity android:name=".controllers.YourReportsView"></activity>
     </application>
 
 </manifest>
