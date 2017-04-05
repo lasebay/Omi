@@ -46,11 +46,12 @@ public class RegisteredUser {
     }
 
     /**
-     * Setter for the username of the account
+     * Setter for the username of the accounts
      *
      * @param username the new username
      */
     public void setUsername(String username) {
+
         this.username = username;
     }
 
