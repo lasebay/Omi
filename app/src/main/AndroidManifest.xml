@@ -59,11 +59,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-
         <activity
             android:name=".controllers.NavigationMain"
             android:label="@string/title_activity_navigation_main"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".controllers.CurrentUsersReports" />
+        <activity android:name=".controllers.HistoricalReportCriteria" />
+        <activity android:name=".controllers.ViewHistoricalReport"></activity>
     </application>
 
 </manifest>

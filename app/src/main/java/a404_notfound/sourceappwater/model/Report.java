@@ -2,6 +2,7 @@ package a404_notfound.sourceappwater.model;
 
 import com.google.android.gms.maps.model.LatLng;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import java.util.Map;
 
 public class Report {
     //someone please double check these types
-    private String date;
+    private Map<String,Object> date;
     private int[] time;
     private static int reportNumber = 0;
     private int reportN = reportNumber;
@@ -25,6 +26,7 @@ public class Report {
 
     private String waterType;
     private String waterCondition;
+    private String userId;
 
     /**
      * Needed for the datasnapshot
@@ -41,9 +43,10 @@ public class Report {
      * @param waterType Denotes what is the source of the water
      * @param waterCondition The suitability of the water for drinking
      * @param date The day the report is made
+     * @param userId FIREBASE ID OF THE USER
      */
     public Report (String reportType, String reporter, LatLng coordinates, String waterType
-            , String waterCondition, String date) {
+            , String waterCondition, Map<String, Object> date, String userId) {
         this.reporter = reporter;
         this.coordinates = coordinates;
         this.waterType = waterType;
@@ -53,6 +56,7 @@ public class Report {
         lng = coordinates.longitude;
         reportN = reportNumber;
         this.reportType = reportType;
+        this.userId = userId;
         //add date and time from fire base as default.
         reportNumber++;
     }
@@ -68,6 +72,7 @@ public class Report {
         double lng = coordinates.longitude;
         Map<String, Object> map = new HashMap<>();
         map.put("type", reportType);
+        map.put("userId",userId);
         map.put("date", date);
         map.put("repoNum", reportN);
         map.put("reporter", reporter);
@@ -107,7 +112,7 @@ public class Report {
      *
      * @return the date the report was made
      */
-    String getDate() {
+    Map<String, Object> getDate() {
         return date;
     }
 
@@ -133,7 +138,8 @@ public class Report {
      */
     public String toString() {
         return "Report Type: " + reportType
-                    +"Date: " + date + "\n"
+                    +"Date: " + date.get("month") + "/"
+                    + date.get("day") + "/" + date.get("year")+ " " + date.get("time") + "\n"
                     + "Report Number: " + reportN + "\n"
                     + "Reporter: " + reporter + "\n"
                     + "Coordinates : " + coordinates
@@ -165,7 +171,7 @@ public class Report {
      *
      * @return Return the type of report
      */
-    public String getReportType() {
+    String getReportType() {
         return reportType;
     }
 }

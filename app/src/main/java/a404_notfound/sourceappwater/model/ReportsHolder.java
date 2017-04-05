@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +21,11 @@ import java.util.Map;
 
 public class ReportsHolder {
     private static SparseArray<Report> holder = new SparseArray<>();
-    private static List<Report> workerReports = new ArrayList<>();
-    private static List<Report> userReports = new ArrayList<>();
+    private static final List<Report> workerReports = new ArrayList<>();
+    private static final List<Report> userReports = new ArrayList<>();
+    private static final List<Report> yourReport = new ArrayList<>();
+    public static  final List<Report> emptyList = new ArrayList<>();
+    public static HistoricalReport historicalReport;
 
 
     private static int i = 0;
@@ -86,6 +90,13 @@ public class ReportsHolder {
         return workerReports;
     }
 
+
+    /**
+     *
+     * @return Reports associated with the usersID
+     */
+    public static List<Report> getYourReport() { return yourReport; }
+
     /**
      * Method used to connect to database and show user all reports submitted.
      */
@@ -97,6 +108,7 @@ public class ReportsHolder {
                 SparseArray<Report> updatedList = new SparseArray<>();
                 workerReports.clear();
                 userReports.clear();
+
 
                 for(DataSnapshot reportSnapShot : dataSnapshot.getChildren()) {
                     Map<String, Object> reportMap =
@@ -115,17 +127,30 @@ public class ReportsHolder {
 
             }
         });
+
+
     }
 
+    /**
+     * Method to set what the current Historical Report is
+     * used as a workaround until Reports can fully implment
+     * Serilizable class
+     * @param h Historical Report created in HistoricalReportCritera
+     */
+    public static  void setHRReport(HistoricalReport h) {
+        historicalReport = h;
+
+    }
     private static Report translateMapToReport(Map<String, Object> map, String key) {
         Report r;
-        String date = (String) map.get("date");
+        Map<String, Object> date = (Map<String, Object>) map.get("date");
         String waterType = (String) map.get("watertype");
         String reporter = (String) map.get("reporter");
         String waterCondition = (String) map.get("watercondition");
         double lat = (double) map.get("lat");
         double lng = (double) map.get("lng");
         String reportType = (String) map.get("type");
+        String userId = (String) map.get("userId");
 
         LatLng latLng = new LatLng(lat,lng);
 
@@ -134,13 +159,17 @@ public class ReportsHolder {
             long ppm = (long) map.get("ppm");
 
             r = new WorkerReport(reportType, reporter, latLng,
-                    waterType, waterCondition, date, ppm, vpm);
+                    waterType, waterCondition, date, userId, ppm, vpm);
             r.setId(key);
             workerReports.add(r);
         } else {
-            r = new Report(reportType,reporter,latLng,waterType,waterCondition,date);
+            r = new Report(reportType,reporter,latLng,waterType,waterCondition,date,userId);
             r.setId(key);
             userReports.add(r);
+        }
+
+        if (fbinstance.getUser().equals(userId)) {
+            yourReport.add(r);
         }
         return r;
 
