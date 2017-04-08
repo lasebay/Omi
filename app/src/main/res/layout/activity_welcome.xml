@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_welcome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/omi_bkg"
+    android:background="@drawable/app_bkg"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -16,14 +15,18 @@
         android:id="@+id/register_button"
         android:layout_width="230dp"
         android:layout_height="35dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:background="@drawable/button_style"
-        android:fontFamily="monospace"
+        android:fontFamily="sans-serif"
         android:onClick="onRegisterPressed"
         android:text="@string/register"
         android:textAllCaps="false"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:layout_marginBottom="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/login_button"
@@ -33,11 +36,25 @@
         android:layout_alignStart="@+id/register_button"
         android:layout_marginBottom="10dp"
         android:background="@drawable/button_style"
-        android:backgroundTint="@color/colorAccent"
-        android:fontFamily="monospace"
+        android:fontFamily="sans-serif"
         android:onClick="onLoginPressed"
         android:text="@string/login"
         android:textAllCaps="false"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/app_name"
+        android:textColor="@color/steelBlue"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        android:typeface="serif" />
 
 </RelativeLayout>
