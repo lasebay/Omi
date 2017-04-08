@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -139,6 +141,22 @@ public class LoginActivity extends AppCompatActivity {
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
+
+                            try {
+                                boolean loggedIn = task.isSuccessful();
+                                if (loggedIn) {
+                                    Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                                    Intent switchScreen = new Intent(getApplicationContext(),
+                                            NavigationMain.class);
+                                    startActivity(switchScreen);
+                                } else {
+                                    FirebaseAuthException e  = (FirebaseAuthException) task.getException();
+                                    throw e;
+                                }
+
+                            } catch (FirebaseAuthException e) {
+
+                            }
                             if (!task.isSuccessful()) {
                                 Log.w(TAG, "signInWithEmail", task.getException());
                                 Throwable e = task.getException();

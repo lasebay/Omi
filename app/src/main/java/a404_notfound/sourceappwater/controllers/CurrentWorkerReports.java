@@ -17,6 +17,9 @@ public class CurrentWorkerReports extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_users_reports);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         recyclerView = (RecyclerView) findViewById(R.id.usersReportsRecylcerView);
 
         recyclerView.setHasFixedSize(true);

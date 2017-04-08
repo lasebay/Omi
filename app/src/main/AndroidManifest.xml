@@ -38,7 +38,8 @@
         <activity
             android:name=".controllers.RegistrationActivity"
             android:label="Registration" />
-        <activity android:name=".controllers.BaseActivity" />
+        <activity android:name=".controllers.BaseActivity"
+            android:parentActivityName=".controllers.NavigationMain" />
         <activity android:name=".controllers.HqActivity" />
         <activity android:name=".controllers.EditInfoActivity" />
         <activity android:name=".controllers.DrawerActivity" />

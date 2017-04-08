@@ -17,6 +17,8 @@ public class YourReportsView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_reports_view);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         recyclerView = (RecyclerView) findViewById(R.id.usersReportsRecylcerView);
 
         recyclerView.setHasFixedSize(true);
