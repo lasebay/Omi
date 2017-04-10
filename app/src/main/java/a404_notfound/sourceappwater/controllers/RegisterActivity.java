@@ -1,7 +1,5 @@
 package a404_notfound.sourceappwater.controllers;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,18 +7,11 @@ import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
 
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -41,7 +32,6 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
-import java.util.ArrayList;
 import java.util.List;
 import a404_notfound.sourceappwater.R;
 import static android.Manifest.permission.READ_CONTACTS;
@@ -116,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         });
 
-        Button cancel = (Button) findViewById(R.id.cancl_registration);
+        Button cancel = (Button) findViewById(R.id.cancel_registration);
         cancel.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
