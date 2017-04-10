@@ -51,7 +51,7 @@ public class EditInfoActivity extends AppCompatActivity {
         fbinstance.addAuthListner();
     }
 
-    //Stop the firbase Listener
+    //Stop the Firebase Listener
     @Override
     public void onStop() {
         super.onStop();
@@ -67,19 +67,19 @@ public class EditInfoActivity extends AppCompatActivity {
 
         mName.setError(null);
 
-        if (name.isEmpty()) {
+        if (name == "") {
             cancel = true;
             focusView = mName;
             mName.setError("This field cannot be empty");
         }
 
-        if (address.isEmpty()) {
+        if (address == "") {
             cancel = true;
             focusView = mAddrs;
             mAddrs.setError("This field cannot be empty");
         }
 
-        if (coordinates.isEmpty()) {
+        if (coordinates == "") {
             cancel = true;
             focusView = mCoord;
             mCoord.setError("This field cannot be empty");

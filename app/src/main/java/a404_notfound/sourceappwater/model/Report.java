@@ -28,7 +28,7 @@ public class Report {
     /**
      * Needed for the datasnapshot
      */
-    public Report() {
+    Report() {
     }
 
     /**
@@ -123,7 +123,7 @@ public class Report {
      *  Date: The day the report was made
      *  Report number: The unique ID# for the report
      *  Reporter: Name of user who made the report
-     *  Coordinates: Longitutde and  of the location of the water
+     *  Coordinates: Longitude and  of the location of the water
      *  Water type: Denotes what is the source of the water
      *  Water condition: The suitability of the water for drinking
      * And returns it as a String
@@ -142,7 +142,7 @@ public class Report {
     }
 
     /**
-     * Method for Firbase to give the string key
+     * Method for Firebase to give the string key
      * @param id the id contained in firebase
      */
     public void setId(String id) {
@@ -151,7 +151,7 @@ public class Report {
 
     /**
      * Method to retrieve that id
-     * @return string contining the firebase id
+     * @return string containing the firebase id
      */
     public String getId() {
         if (id.isEmpty()) {

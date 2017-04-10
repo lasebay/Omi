@@ -21,11 +21,11 @@ import a404_notfound.sourceappwater.R;
 public class ReportViewAdapter extends RecyclerView.Adapter<ReportViewAdapter.ReportViewHolder> {
     //private SparseArray<Report> holder;
     private List<Report> userReport;
-    private List<Report> holder;
+    private final List<Report> holder;
 
     /**
      * Adapter manages the large dataset of reports
-     * @param holder the list of all the currnet reports
+     * @param holder the list of all the current reports
      */
     public ReportViewAdapter(List<Report> holder) {
         this.holder = holder;
@@ -61,8 +61,8 @@ public class ReportViewAdapter extends RecyclerView.Adapter<ReportViewAdapter.Re
     }
 
     static class ReportViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
-        TextView author;
+        final CardView cardView;
+        final TextView author;
         TextView date;
         TextView waterType;
         TextView waterCondition;

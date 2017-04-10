@@ -3,9 +3,10 @@ package a404_notfound.sourceappwater.controllers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
+//TODO Check if needed
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -31,12 +33,11 @@ import a404_notfound.sourceappwater.model.FirebaseUtility;
 public class NavigationMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private WaterAvailibilityMap wap = new WaterAvailibilityMap();
-    private CreateReportsActivity crp = new CreateReportsActivity();
-    private FirebaseUtility fbinstance = new FirebaseUtility();
-    private CreateWorkerReport crwp = new CreateWorkerReport();
-    private ManagerViewReport mvp = new ManagerViewReport();
-    private UserWorkerViewReport uwvp = new UserWorkerViewReport();
+    private final WaterAvailabilityMap wap = new WaterAvailabilityMap();
+    private final ViewReportActivity vrp = new ViewReportActivity();
+    private final CreateReportsActivity crp = new CreateReportsActivity();
+    private final FirebaseUtility fbinstance = new FirebaseUtility();
+    private final CreateWorkerReport crwp = new CreateWorkerReport();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

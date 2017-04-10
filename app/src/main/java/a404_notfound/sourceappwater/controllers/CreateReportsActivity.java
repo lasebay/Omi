@@ -51,12 +51,12 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private TextView mName;
-    protected FirebaseUtility fbinstance;
+    private FirebaseUtility fbinstance;
     private Spinner spinner;
     private Spinner spinner2;
-    protected String waterCondition;
-    protected String waterType;
-    protected String author;
+    String waterCondition;
+    String waterType;
+    String author;
 
     private MapView mMapView;
     private GoogleMap mMap;
@@ -64,7 +64,7 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
 
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
-    protected LatLng mMarkerPosition;
+    private LatLng mMarkerPosition;
 
 
     @Override
@@ -314,7 +314,7 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
 
     }
 
-    protected LatLng getmMarkerPosition() {
+    LatLng getmMarkerPosition() {
         return mMarkerPosition;
     }
 }

@@ -19,7 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="155dp"
-                android:id="@+id/createreport"
+                android:id="@+id/createReport"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
 
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/viewreport"
-                android:layout_below="@+id/createreport"
+                android:layout_below="@+id/createReport"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp" />
 

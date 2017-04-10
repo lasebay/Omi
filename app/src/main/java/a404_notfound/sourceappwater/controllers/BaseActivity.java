@@ -91,7 +91,7 @@ public class BaseActivity extends AppCompatActivity {
         accountType = (TextView) findViewById(R.id.accountType);
     }
 
-    //Stop the firbase Listener
+    //Stop the Firebase Listener
     @Override
     public void onStop() {
         super.onStop();
