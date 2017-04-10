@@ -29,7 +29,7 @@ public class ReportViewAdapter extends RecyclerView.Adapter<ReportViewAdapter.Re
      */
     public ReportViewAdapter(List<Report> holder) {
         this.holder = holder;
-    }
+    }   // override inspections because recycle view needs a collection to function
 
     @Override
     public ReportViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

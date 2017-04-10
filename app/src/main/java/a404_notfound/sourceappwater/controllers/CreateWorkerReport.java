@@ -18,7 +18,9 @@ import android.widget.TabHost;
 import java.text.SimpleDateFormat;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import a404_notfound.sourceappwater.R;
 import a404_notfound.sourceappwater.model.FirebaseUtility;
@@ -78,9 +80,6 @@ public class CreateWorkerReport extends CreateReportsActivity {
                     //ReportsHolder.addReport(rep);
                     fbinstance.addReport(fbinstance.getmRef(), rep);
                 }
-
-                 //startActivity(new Intent(getActivity().getApplicationContext(), NavigationMain.class));
-
             }
         });
 
@@ -99,11 +98,18 @@ public class CreateWorkerReport extends CreateReportsActivity {
         int p = Integer.parseInt(vpm);
         int v = Integer.parseInt(ppm);
 
-        String formattedDate = df.format(c.getTime());
+        Map<String, Object> arr = new HashMap<>();
+        arr.put("year", c.get(Calendar.YEAR));
+        arr.put("month", c.get(Calendar.MONTH));
+        arr.put("date", c.get(Calendar.DAY_OF_MONTH));
 
+        String s = c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE)
+                + ":" + c.get(Calendar.SECOND);
+        arr.put("time", s);
 
         if (super.getmMarkerPosition() != null) {
-            return new WorkerReport("Worker", name, super.getmMarkerPosition(), wt, wc, formattedDate, p, v);
+            return new WorkerReport("Worker", name, super.getmMarkerPosition(), wt, wc,
+                    arr, fbinstance.getUser(), p, v);
         }
         return null;
     }

@@ -58,7 +58,6 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1" />
-                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -67,10 +66,10 @@
                 android:layout_height="match_parent">
 
                 <EditText
+                    android:id="@+id/reEnterPass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/re_enter_password"
-                    android:id="@+id/reEnterPass" />
+                    android:hint="@string/re_enter_password" />
             </android.support.design.widget.TextInputLayout>
 
             <CheckBox

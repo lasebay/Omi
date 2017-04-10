@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="a404_notfound.sourceappwater.controllers.ManagerViewReport">
+
+    <Button
+        android:id="@+id/seeUserReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
+        android:text="Go To User Report"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp" />
+
+    <Button
+        android:id="@+id/seeYourReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
+        android:text="Go To My Reports"
+        android:layout_marginBottom="30dp"
+        android:layout_above="@+id/seeWorkerReports"
+        android:layout_alignStart="@+id/seeUserReport" />
+
+    <Button
+        android:id="@+id/seeWorkerReports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
+        android:text="Go To Worker Reports"
+        android:layout_above="@+id/seeUserReport"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/seeHistoricalReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
+        android:text="See A Historical Report"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp" />
+
+</RelativeLayout>
