@@ -62,7 +62,7 @@ public class NavigationMain extends AppCompatActivity
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchScreen = new Intent(getApplicationContext(), BaseActivity.class);
+                Intent switchScreen = new Intent(getApplicationContext(), EditInfoActivity.class);
                 startActivity(switchScreen);
             }
         });

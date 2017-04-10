@@ -37,7 +37,7 @@ public class EditInfoActivity extends DrawerActivity {
             @Override
             public void onClick(View v) {
                 updateInfo();
-                Intent switchScreen = new Intent(getApplicationContext(), BaseActivity.class);
+                Intent switchScreen = new Intent(getApplicationContext(), NavigationMain.class);
                 startActivity(switchScreen);
             }
         });
