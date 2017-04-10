@@ -45,6 +45,13 @@
     <string name="logout">Logout</string>
     <string name="find_water">Find Water</string>
     <string name="submmited_reports">Your Reports</string>
+    <string name="reporter">Reporter</string>
+    <string name="date">Date</string>
+    <string name="water_cond">Water Condition</string>
+    <string name="water_type">Water Type</string>
+    <string name="report_id">Report ID</string>
+    <string name="vpm">VPM</string>
+    <string name="ppm">PPM</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

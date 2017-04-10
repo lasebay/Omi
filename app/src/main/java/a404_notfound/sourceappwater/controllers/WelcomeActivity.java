@@ -27,7 +27,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * Button handler for the login button
      * @param view the button
      */
-    protected void onLoginPressed(View view) {
+    public void onLoginPressed(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
@@ -36,7 +36,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * Button handler for the register button
      * @param view the button
      */
-    protected void onRegisterPressed(View view) {
+    public void onRegisterPressed(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }

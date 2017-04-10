@@ -2,7 +2,6 @@ package a404_notfound.sourceappwater.model;
 
 import com.google.android.gms.maps.model.LatLng;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,8 +14,6 @@ public class Report {
     //someone please double check these types
     private Map<String,Object> date;
     private int[] time;
-    private static int reportNumber = 0;
-    private int reportN = reportNumber;
     private String reporter;
     private LatLng coordinates;
     private double lat;
@@ -54,11 +51,9 @@ public class Report {
         this.date = date;
         lat = coordinates.latitude;
         lng = coordinates.longitude;
-        reportN = reportNumber;
         this.reportType = reportType;
         this.userId = userId;
         //add date and time from fire base as default.
-        reportNumber++;
     }
 
     /**
@@ -74,7 +69,6 @@ public class Report {
         map.put("type", reportType);
         map.put("userId",userId);
         map.put("date", date);
-        map.put("repoNum", reportN);
         map.put("reporter", reporter);
         map.put("watertype", waterType);
         map.put("watercondition", waterCondition);
@@ -140,7 +134,6 @@ public class Report {
         return "Report Type: " + reportType
                     +"Date: " + date.get("month") + "/"
                     + date.get("day") + "/" + date.get("year")+ " " + date.get("time") + "\n"
-                    + "Report Number: " + reportN + "\n"
                     + "Reporter: " + reporter + "\n"
                     + "Coordinates : " + coordinates
                     + "\n Water Type: " + waterType

@@ -43,10 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
     private FirbaseUtility fbinstance;
-    private static boolean canContinue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +54,6 @@ public class LoginActivity extends AppCompatActivity {
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -161,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Log.w(TAG, "signInWithEmail", task.getException());
                                 Throwable e = task.getException();
                                 if(e instanceof FirebaseAuthInvalidUserException) {
-                                    mEmailView.setError("This is email is not registered");
+                                    mEmailView.setError("This email is not registered");
                                 } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
                                     mPasswordView.setError("The password is invalid for user");
                                 }
