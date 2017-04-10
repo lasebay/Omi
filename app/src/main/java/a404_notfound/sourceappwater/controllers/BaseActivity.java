@@ -2,13 +2,15 @@ package a404_notfound.sourceappwater.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 /**
  * Controller for the user's profile screen
  */
-public class BaseActivity extends DrawerActivity {
+public class BaseActivity extends AppCompatActivity {
       private static final String TAG = "Info";
 
 
@@ -26,7 +28,7 @@ public class BaseActivity extends DrawerActivity {
     private TextView address;
     private TextView coordinates;
     private TextView accountType;
-    private FirbaseUtility fbinstance;
+    private FirebaseUtility fbinstance;
 
 
 
@@ -34,6 +36,8 @@ public class BaseActivity extends DrawerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
 
         Button mEditInfo = (Button) findViewById(R.id.editinfobutton);
         mEditInfo.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +49,7 @@ public class BaseActivity extends DrawerActivity {
         });
 
 
-        fbinstance = new FirbaseUtility();
+        fbinstance = new FirebaseUtility();
         fbinstance.getmRef().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -87,15 +91,11 @@ public class BaseActivity extends DrawerActivity {
         accountType = (TextView) findViewById(R.id.accountType);
     }
 
-    //Stop the firbase Listener
+    //Stop the Firebase Listener
     @Override
     public void onStop() {
         super.onStop();
         fbinstance.removeAuthListener();
     }
 
-    @Override
-    protected int getcView() {
-        return R.layout.activity_base;
-    }
 }

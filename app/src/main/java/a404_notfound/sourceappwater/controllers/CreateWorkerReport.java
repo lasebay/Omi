@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SeekBar;
 
 import android.widget.TabHost;
 
@@ -19,10 +18,12 @@ import android.widget.TabHost;
 import java.text.SimpleDateFormat;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 
 import a404_notfound.sourceappwater.model.WorkerReport;
 
@@ -31,7 +32,7 @@ import a404_notfound.sourceappwater.model.WorkerReport;
  */
 public class CreateWorkerReport extends CreateReportsActivity {
 
-    private FirbaseUtility fbinstance;
+    private FirebaseUtility fbinstance;
     private EditText editText;
     private EditText editText1;
 
@@ -68,7 +69,7 @@ public class CreateWorkerReport extends CreateReportsActivity {
         editText1 = (EditText) view.findViewById(R.id.ppm);
 
 
-        fbinstance = new FirbaseUtility();
+        fbinstance = new FirebaseUtility();
         Button mCreateReportbttn2 = (Button) view.findViewById(R.id.createReport2);
         mCreateReportbttn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,9 +80,6 @@ public class CreateWorkerReport extends CreateReportsActivity {
                     //ReportsHolder.addReport(rep);
                     fbinstance.addReport(fbinstance.getmRef(), rep);
                 }
-
-                 //startActivity(new Intent(getActivity().getApplicationContext(), NavigationMain.class));
-
             }
         });
 
@@ -100,11 +98,18 @@ public class CreateWorkerReport extends CreateReportsActivity {
         int p = Integer.parseInt(vpm);
         int v = Integer.parseInt(ppm);
 
-        String formattedDate = df.format(c.getTime());
+        Map<String, Object> arr = new HashMap<>();
+        arr.put("year", c.get(Calendar.YEAR));
+        arr.put("month", c.get(Calendar.MONTH));
+        arr.put("date", c.get(Calendar.DAY_OF_MONTH));
 
+        String s = c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE)
+                + ":" + c.get(Calendar.SECOND);
+        arr.put("time", s);
 
         if (super.getmMarkerPosition() != null) {
-            return new WorkerReport("Worker", name, super.getmMarkerPosition(), wt, wc, formattedDate, p, v);
+            return new WorkerReport("Worker", name, super.getmMarkerPosition(), wt, wc,
+                    arr, fbinstance.getUser(), p, v);
         }
         return null;
     }

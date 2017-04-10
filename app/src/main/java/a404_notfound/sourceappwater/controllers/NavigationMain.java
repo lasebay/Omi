@@ -3,12 +3,9 @@ package a404_notfound.sourceappwater.controllers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -23,19 +21,20 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 
+/**
+ * The main page that navigates the App
+ */
 public class NavigationMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private WaterAvailibilityMap wap = new WaterAvailibilityMap();
-    private ViewReportActivity vrp = new ViewReportActivity();
-    private CreateReportsActivity crp = new CreateReportsActivity();
-    private FirbaseUtility fbinstance = new FirbaseUtility();
-    private CreateWorkerReport crwp = new CreateWorkerReport();
+    private final WaterAvailabilityMap wap = new WaterAvailabilityMap();
+    private final ViewReportActivity vrp = new ViewReportActivity();
+    private final CreateReportsActivity crp = new CreateReportsActivity();
+    private final FirebaseUtility fbinstance = new FirebaseUtility();
+    private final CreateWorkerReport crwp = new CreateWorkerReport();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +53,7 @@ public class NavigationMain extends AppCompatActivity
 
         final View header = navigationView.getHeaderView(0);
         TextView userRole = (TextView) header.findViewById(R.id.userRole);
-        userRole.setText(FirbaseUtility.getRole());
+        userRole.setText(FirebaseUtility.getRole());
         TextView email = (TextView) header.findViewById(R.id.textView);
         email.setText(fbinstance.getUserEmail());
 
@@ -132,7 +131,7 @@ public class NavigationMain extends AppCompatActivity
 
     /**
      * Switches the screen based on which tab is selected
-     * @param id
+     * @param id id that is being passed in
      */
     private void displaySelected(int id) {
         Fragment fragment = null;
@@ -142,8 +141,8 @@ public class NavigationMain extends AppCompatActivity
         } else if (id == R.id.nav_find_water) {
             fragment = wap;
         } else if (id == R.id.nav_createReport) {
-            if (("Worker").equals(FirbaseUtility.getRole())
-                    || ("Manager").equals(FirbaseUtility.getRole())) {
+            if (("Worker").equals(FirebaseUtility.getRole())
+                    || ("Manager").equals(FirebaseUtility.getRole())) {
                 fragment = crwp;
             } else {
                 fragment = crp;

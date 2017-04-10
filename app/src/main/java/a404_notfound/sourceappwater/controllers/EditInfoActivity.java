@@ -9,7 +9,7 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 
 /**
  * Controller for changing user information
@@ -21,7 +21,7 @@ public class EditInfoActivity extends DrawerActivity {
     private EditText mCoord;
 
 
-    private FirbaseUtility fbinstance;
+    private FirebaseUtility fbinstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class EditInfoActivity extends DrawerActivity {
         mName = (EditText) findViewById(R.id.nameEdit);
         mAddrs = (EditText) findViewById(R.id.addressEdit);
         mCoord = (EditText) findViewById(R.id.coordinateEdit);
-        fbinstance = new FirbaseUtility();
+        fbinstance = new FirebaseUtility();
 
         Button changes = (Button) findViewById(R.id.submitChangesButton);
         changes.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,7 @@ public class EditInfoActivity extends DrawerActivity {
         fbinstance.addAuthListner();
     }
 
-    //Stop the firbase Listener
+    //Stop the Firebase Listener
     @Override
     public void onStop() {
         super.onStop();
@@ -66,19 +66,19 @@ public class EditInfoActivity extends DrawerActivity {
 
         mName.setError(null);
 
-        if (name == null) {
+        if (name == "") {
             cancel = true;
             focusView = mName;
             mName.setError("This field cannot be empty");
         }
 
-        if (address == null) {
+        if (address == "") {
             cancel = true;
             focusView = mAddrs;
             mAddrs.setError("This field cannot be empty");
         }
 
-        if (coordinates == null) {
+        if (coordinates == "") {
             cancel = true;
             focusView = mCoord;
             mCoord.setError("This field cannot be empty");

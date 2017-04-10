@@ -12,7 +12,6 @@
     tools:context="a404_notfound.sourceappwater.controllers.RegisterActivity">
 
     <!-- Login progress -->
-
     <ProgressBar
         android:id="@+id/login_progress"
         style="?android:attr/progressBarStyleLarge"
@@ -75,10 +74,10 @@
             </android.support.design.widget.TextInputLayout>
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:text="@string/i_agree_to_the_terms_and_conditions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/i_agree_to_the_terms_and_conditions" />
+                android:id="@+id/checkBox" />
 
             <Button
                 android:id="@+id/signup_button"

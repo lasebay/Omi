@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="a404_notfound.sourceappwater.controllers.UserWorkerViewReport">
+
+    <Button
+        android:id="@+id/seeUserReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="82dp"
+        android:background="@drawable/button_style"
+        android:text="Go To User Report"
+        android:layout_below="@+id/seeYourReport"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/seeYourReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="78dp"
+        android:background="@drawable/button_style"
+        android:text="Go To My Reports"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/seeUserReport" />
+</RelativeLayout>

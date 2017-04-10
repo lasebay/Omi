@@ -3,16 +3,13 @@ package a404_notfound.sourceappwater.controllers;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-
+import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-
-import android.util.Log;
-
-import android.os.Build;
-import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,14 +20,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 import a404_notfound.sourceappwater.R;
@@ -150,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity {
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
-        String passwordReent = mPasswordReEntry.getText().toString();
+        String passwordReEntry = mPasswordReEntry.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -163,7 +160,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         // Check that password Re-entry is the same as password
-        if (!password.equals(passwordReent)) {
+        if (!password.equals(passwordReEntry)) {
             mPasswordReEntry.setError("The Passwords must match");
             focusView = mPasswordReEntry;
             cancel = true;
@@ -215,23 +212,23 @@ public class RegisterActivity extends AppCompatActivity {
 
     
     /**
-     * Method to check if the email is signigicant enough
+     * Method to check if the email is significant enough
      * @param email current email typed in
      * @return boolean if the email is valid
      */
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
          return (email.contains("@") && (email.contains(".com")
-                || email.contains(".edu") || email.contains(".net"))
-                && email.length() > 5) ;
+                 || email.contains(".edu") || email.contains(".net"))
+                 && (email.length() > 5));
     }
 
     /**
      * Dummy method for now
-     * @param password password to be given in the code
+     * @param password password to be giving in the code
      * @return if the password is valid
      */
-    private boolean isPasswordValid(CharSequence password) {
+    private boolean isPasswordValid(String password) {
         return (password.length() > 4);
     }
 
@@ -274,7 +271,6 @@ public class RegisterActivity extends AppCompatActivity {
     ////  Extraneous Code ??? ///////
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
-            return;
         }
 
     }
@@ -308,12 +304,12 @@ public class RegisterActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
                                            int[] grantResults) {
         if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if ((grantResults.length == 1) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 populateAutoComplete();
             }
         }
     }
 
-    /// End of extrandeois code////////
+    /// End of extraneous code////////
 }
 

@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class Report {
     //someone please double check these types
-    private String date;
+    private Map<String,Object> date;
     private int[] time;
     private String reporter;
     private LatLng coordinates;
@@ -23,11 +23,12 @@ public class Report {
 
     private String waterType;
     private String waterCondition;
+    private String userId;
 
     /**
      * Needed for the datasnapshot
      */
-    public Report() {
+    Report() {
     }
 
     /**
@@ -39,9 +40,10 @@ public class Report {
      * @param waterType Denotes what is the source of the water
      * @param waterCondition The suitability of the water for drinking
      * @param date The day the report is made
+     * @param userId FIREBASE ID OF THE USER
      */
     public Report (String reportType, String reporter, LatLng coordinates, String waterType
-            , String waterCondition, String date) {
+            , String waterCondition, Map<String, Object> date, String userId) {
         this.reporter = reporter;
         this.coordinates = coordinates;
         this.waterType = waterType;
@@ -50,6 +52,7 @@ public class Report {
         lat = coordinates.latitude;
         lng = coordinates.longitude;
         this.reportType = reportType;
+        this.userId = userId;
         //add date and time from fire base as default.
     }
 
@@ -64,6 +67,7 @@ public class Report {
         double lng = coordinates.longitude;
         Map<String, Object> map = new HashMap<>();
         map.put("type", reportType);
+        map.put("userId",userId);
         map.put("date", date);
         map.put("reporter", reporter);
         map.put("watertype", waterType);
@@ -102,7 +106,7 @@ public class Report {
      *
      * @return the date the report was made
      */
-    String getDate() {
+    Map<String, Object> getDate() {
         return date;
     }
 
@@ -119,7 +123,7 @@ public class Report {
      *  Date: The day the report was made
      *  Report number: The unique ID# for the report
      *  Reporter: Name of user who made the report
-     *  Coordinates: Longitutde and  of the location of the water
+     *  Coordinates: Longitude and  of the location of the water
      *  Water type: Denotes what is the source of the water
      *  Water condition: The suitability of the water for drinking
      * And returns it as a String
@@ -128,7 +132,8 @@ public class Report {
      */
     public String toString() {
         return "Report Type: " + reportType
-                    +"Date: " + date + "\n"
+                    +"Date: " + date.get("month") + "/"
+                    + date.get("day") + "/" + date.get("year")+ " " + date.get("time") + "\n"
                     + "Reporter: " + reporter + "\n"
                     + "Coordinates : " + coordinates
                     + "\n Water Type: " + waterType
@@ -137,7 +142,7 @@ public class Report {
     }
 
     /**
-     * Method for Firbase to give the string key
+     * Method for Firebase to give the string key
      * @param id the id contained in firebase
      */
     public void setId(String id) {
@@ -146,7 +151,7 @@ public class Report {
 
     /**
      * Method to retrieve that id
-     * @return string contining the firebase id
+     * @return string containing the firebase id
      */
     public String getId() {
         if (id.isEmpty()) {
@@ -159,7 +164,7 @@ public class Report {
      *
      * @return Return the type of report
      */
-    public String getReportType() {
+    String getReportType() {
         return reportType;
     }
 }

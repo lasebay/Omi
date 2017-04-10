@@ -25,7 +25,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 
 /**
  * A login screen that offers login via email/password.
@@ -41,7 +41,10 @@ public class LoginActivity extends AppCompatActivity {
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private FirbaseUtility fbinstance;
+    private View mProgressView;
+    private View mLoginFormView;
+    private FirebaseUtility fbinstance;
+    private static boolean canContinue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +55,13 @@ public class LoginActivity extends AppCompatActivity {
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mLoginFormView = findViewById(R.id.login_form);
+        mProgressView = findViewById(R.id.login_progress);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                if ((id == R.id.login) || (id == EditorInfo.IME_NULL)) {
                     attemptLogin();
                     return true;
                 }
@@ -64,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        fbinstance = new FirbaseUtility();
+        fbinstance = new FirebaseUtility();
 
         //Sets event for when Log in button is clicked
         Button mEmailSignInButton = (Button) findViewById(R.id.sign_in_button);
@@ -138,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Log.w(TAG, "signInWithEmail", task.getException());
                                 Throwable e = task.getException();
                                 if(e instanceof FirebaseAuthInvalidUserException) {
-                                    mEmailView.setError("This email is not registered");
+                                    mEmailView.setError("This is email is not registered");
                                 } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
                                     mPasswordView.setError("The password is invalid for user");
                                 }
@@ -164,7 +169,7 @@ public class LoginActivity extends AppCompatActivity {
         fbinstance.addAuthListner();
     }
 
-    //Stop the firbase Listener
+    //Stop the Firebase Listener
     @Override
     public void onStop() {
         super.onStop();

@@ -8,12 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 import a404_notfound.sourceappwater.model.ReportViewAdapter;
 import a404_notfound.sourceappwater.model.ReportsHolder;
 
@@ -33,13 +31,13 @@ public class ViewReportActivity extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ReportsHolder.updateReportList();
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recylceView);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         ReportViewAdapter adapter;
-        if (("Manager").equals(FirbaseUtility.getRole())) {
+        if (("Manager").equals(FirebaseUtility.getRole())) {
              adapter = new ReportViewAdapter(ReportsHolder.getWorkerReports());
         } else {
             adapter = new ReportViewAdapter(ReportsHolder.getUserReports());

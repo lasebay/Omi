@@ -8,16 +8,16 @@ public class Admin {
     private String username;
     private String address;
     private String coordinates;
-    private int loginAttemps;
+    private int loginAttempts;
 
     /**
      * Generic constructor
      */
-    public Admin() {
+    private Admin() {
         username = "No Name";
         coordinates = "None";
         address = "None";
-        loginAttemps = 0;
+        loginAttempts = 0;
     }
 
     /**
@@ -73,17 +73,17 @@ public class Admin {
      *
      * @return the number of consecutive failed login attempts
      */
-    public int getLoginAttemps() {
-        return loginAttemps;
+    public int getloginAttempts() {
+        return loginAttempts;
     }
 
     /**
      * Setter for login attempts
      *
-     * @param loginAttemps the updated amount of failed login attempts
+     * @param loginAttempts the updated amount of failed login attempts
      */
-    public void setLoginAttemps(int loginAttemps) {
-        this.loginAttemps = loginAttemps;
+    public void setloginAttempts(int loginAttempts) {
+        this.loginAttempts = loginAttempts;
     }
 
     /**
