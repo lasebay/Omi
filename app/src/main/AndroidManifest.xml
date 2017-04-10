@@ -40,10 +40,7 @@
             android:label="Registration" />
         <activity android:name=".controllers.BaseActivity"
             android:parentActivityName=".controllers.NavigationMain" />
-        <activity android:name=".controllers.HqActivity" />
         <activity android:name=".controllers.EditInfoActivity" />
-        <activity android:name=".controllers.DrawerActivity" />
-        <activity android:name=".controllers.ReportsActivity" />
         <!--
              The API key for Google Maps-based APIs
              is defined as a string resource.
@@ -67,10 +64,8 @@
         <activity android:name=".controllers.CurrentUsersReports" />
         <activity android:name=".controllers.HistoricalReportCriteria" />
         <activity android:name=".controllers.ViewHistoricalReport" />
-        <activity android:name=".controllers.UserWorkerViewReport" />
-        <activity android:name=".controllers.ManagerViewReport" />
         <activity android:name=".controllers.CurrentWorkerReports" />
-        <activity android:name=".controllers.YourReportsView"></activity>
+        <activity android:name=".controllers.YourReportsView"/>
     </application>
 
 </manifest>

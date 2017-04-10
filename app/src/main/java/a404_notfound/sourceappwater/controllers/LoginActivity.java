@@ -27,7 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 
 /**
  * A login screen that offers login via email/password.
@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private FirbaseUtility fbinstance;
+    private FirebaseUtility fbinstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                if ((id == R.id.login) || (id == EditorInfo.IME_NULL)) {
                     attemptLogin();
                     return true;
                 }
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        fbinstance = new FirbaseUtility();
+        fbinstance = new FirebaseUtility();
 
         //Sets event for when Log in button is clicked
         Button mEmailSignInButton = (Button) findViewById(R.id.sign_in_button);
@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
             fbinstance.getmAuth().signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete( Task<AuthResult> task) {
+                        public void onComplete(@NonNull Task<AuthResult> task) {
                             Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
                             // If sign in fails, display a message to the user. If sign in succeeds
@@ -145,12 +145,11 @@ public class LoginActivity extends AppCompatActivity {
                                             NavigationMain.class);
                                     startActivity(switchScreen);
                                 } else {
-                                    FirebaseAuthException e  = (FirebaseAuthException) task.getException();
-                                    throw e;
+                                    throw (FirebaseAuthException) task.getException();
                                 }
 
                             } catch (FirebaseAuthException e) {
-
+                                //TODO handle approiate exceptions and throw show apporiate erros
                             }
                             if (!task.isSuccessful()) {
                                 Log.w(TAG, "signInWithEmail", task.getException());

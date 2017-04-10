@@ -23,7 +23,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 
 import a404_notfound.sourceappwater.model.WorkerReport;
 
@@ -32,7 +32,7 @@ import a404_notfound.sourceappwater.model.WorkerReport;
  */
 public class CreateWorkerReport extends CreateReportsActivity {
 
-    private FirbaseUtility fbinstance;
+    private FirebaseUtility fbinstance;
     private EditText editText;
     private EditText editText1;
 
@@ -69,7 +69,7 @@ public class CreateWorkerReport extends CreateReportsActivity {
         editText1 = (EditText) view.findViewById(R.id.ppm);
 
 
-        fbinstance = new FirbaseUtility();
+        fbinstance = new FirebaseUtility();
         Button mCreateReportbttn2 = (Button) view.findViewById(R.id.createReport2);
         mCreateReportbttn2.setOnClickListener(new View.OnClickListener() {
             @Override

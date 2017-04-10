@@ -3,8 +3,6 @@ package a404_notfound.sourceappwater.controllers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -23,18 +21,19 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 
+
+/**
+ * Main navigation View for the App, contians the different sections
+ */
 public class NavigationMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private WaterAvailibilityMap wap = new WaterAvailibilityMap();
-    private ViewReportActivity vrp = new ViewReportActivity();
     private CreateReportsActivity crp = new CreateReportsActivity();
-    private FirbaseUtility fbinstance = new FirbaseUtility();
+    private FirebaseUtility fbinstance = new FirebaseUtility();
     private CreateWorkerReport crwp = new CreateWorkerReport();
     private ManagerViewReport mvp = new ManagerViewReport();
     private UserWorkerViewReport uwvp = new UserWorkerViewReport();
@@ -48,7 +47,8 @@ public class NavigationMain extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -56,7 +56,7 @@ public class NavigationMain extends AppCompatActivity
 
         final View header = navigationView.getHeaderView(0);
         TextView userRole = (TextView) header.findViewById(R.id.userRole);
-        userRole.setText(FirbaseUtility.getRole());
+        userRole.setText(FirebaseUtility.getRole());
         TextView email = (TextView) header.findViewById(R.id.textView);
         email.setText(fbinstance.getUserEmail());
 
@@ -134,24 +134,24 @@ public class NavigationMain extends AppCompatActivity
 
     /**
      * Switches the screen based on which tab is selected
-     * @param id
+     * @param id The id referring to the layout tab
      */
     private void displaySelected(int id) {
         Fragment fragment = null;
 
         if (id == R.id.nav_home) {
-
+            //TODO Deceide what will the home screen be
         } else if (id == R.id.nav_find_water) {
             fragment = wap;
         } else if (id == R.id.nav_createReport) {
-            if (("Worker").equals(FirbaseUtility.getRole())
-                    || ("Manager").equals(FirbaseUtility.getRole())) {
+            if (("Worker").equals(FirebaseUtility.getRole())
+                    || ("Manager").equals(FirebaseUtility.getRole())) {
                 fragment = crwp;
             } else {
                 fragment = crp;
             }
         } else if (id == R.id.nav_view_my_reports) {
-            if (("Manager").equals(FirbaseUtility.getRole())) {
+            if (("Manager").equals(FirebaseUtility.getRole())) {
                 fragment = mvp;
             } else {
                 fragment = uwvp;

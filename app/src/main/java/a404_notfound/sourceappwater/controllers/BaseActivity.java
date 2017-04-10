@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
     private TextView address;
     private TextView coordinates;
     private TextView accountType;
-    private FirbaseUtility fbinstance;
+    private FirebaseUtility fbinstance;
 
 
 
@@ -49,7 +49,7 @@ public class BaseActivity extends AppCompatActivity {
         });
 
 
-        fbinstance = new FirbaseUtility();
+        fbinstance = new FirebaseUtility();
         fbinstance.getmRef().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

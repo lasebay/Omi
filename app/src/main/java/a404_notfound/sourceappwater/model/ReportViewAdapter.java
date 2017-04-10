@@ -2,7 +2,6 @@ package a404_notfound.sourceappwater.model;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +42,7 @@ public class ReportViewAdapter extends RecyclerView.Adapter<ReportViewAdapter.Re
     public void onBindViewHolder(ReportViewHolder reportViewHolder, int position) {
 
         if (("Worker").equals(holder.get(position).getReportType())
-                && (("Manager").equals(FirbaseUtility.getRole()))) {
+                && (("Manager").equals(FirebaseUtility.getRole()))) {
             reportViewHolder.author.setText(holder.get(position).toString());
         } else {
             reportViewHolder.author.setText(holder.get(position).toString());
@@ -51,7 +50,8 @@ public class ReportViewAdapter extends RecyclerView.Adapter<ReportViewAdapter.Re
 //        reportViewHolder.date.setText(holder.valueAt(position).getDate());
 //        reportViewHolder.waterType.setText(holder.valueAt(position).getWaterType());
 //        reportViewHolder.waterCondition.setText(holder.valueAt(position).getWaterCondition());
-//        reportViewHolder.coordinates.setText(holder.valueAt(position).getCoordinates().toString());
+//        reportViewHolder.coordinates
+//                          .setText(holder.valueAt(position).getCoordinates().toString());
 //        reportViewHolder.reportId.setText(holder.valueAt(position).getId());
     }
 

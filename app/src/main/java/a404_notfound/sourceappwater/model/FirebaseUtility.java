@@ -1,5 +1,6 @@
 package a404_notfound.sourceappwater.model;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,7 +20,7 @@ import java.util.Map;
  * Deals with everything Firebase related
  */
 
-public class FirbaseUtility {
+public class FirebaseUtility {
 
     //Firebase Database Objects
     private DatabaseReference mRef;
@@ -35,7 +36,7 @@ public class FirbaseUtility {
     /**
      * Sets up a connection to the Firebase Database
      */
-    public FirbaseUtility() {
+    public FirebaseUtility() {
         //Set Up Database For Session
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         mRef = database.getReference();
@@ -44,7 +45,7 @@ public class FirbaseUtility {
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onAuthStateChanged(FirebaseAuth firebaseAuth) {
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in

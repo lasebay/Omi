@@ -1,8 +1,6 @@
 package a404_notfound.sourceappwater.controllers;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -16,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -31,26 +28,19 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
+import a404_notfound.sourceappwater.model.FirebaseUtility;
 import a404_notfound.sourceappwater.model.Report;
-import a404_notfound.sourceappwater.model.ReportsHolder;
 import a404_notfound.sourceappwater.model.WaterCondition;
 import a404_notfound.sourceappwater.model.WaterType;
 
@@ -61,7 +51,7 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private TextView mName;
-    protected FirbaseUtility fbinstance;
+    protected FirebaseUtility fbinstance;
     private Spinner spinner;
     private Spinner spinner2;
     protected String waterCondition;
@@ -94,7 +84,7 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
         super.onViewCreated(view, savedInstanceState);
 
 //        mName = (TextView) view.findViewById(R.id.reportAuthor);
-        fbinstance = new FirbaseUtility();
+        fbinstance = new FirebaseUtility();
 
         Spinner spinner = (Spinner) view.findViewById(R.id.waterType);
         ArrayAdapter<WaterType> adapter = new ArrayAdapter(
@@ -205,7 +195,8 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
         arr.put("month", c.get(Calendar.MONTH));
         arr.put("day", c.get(Calendar.DAY_OF_MONTH));
 
-        String s = c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
+        String s = c.get(Calendar.HOUR) + ":"
+                + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
         arr.put("time", s);
 
 

@@ -8,7 +8,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +28,7 @@ public class ReportsHolder {
 
 
     private static int i = 0;
-    private static final FirbaseUtility fbinstance = new FirbaseUtility();
+    private static final FirebaseUtility fbinstance = new FirebaseUtility();
 
     /**
      *
