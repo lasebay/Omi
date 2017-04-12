@@ -34,10 +34,11 @@ public class NavigationMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private final WaterAvailabilityMap wap = new WaterAvailabilityMap();
-    private final ViewReportActivity vrp = new ViewReportActivity();
     private final CreateReportsActivity crp = new CreateReportsActivity();
     private final FirebaseUtility fbinstance = new FirebaseUtility();
     private final CreateWorkerReport crwp = new CreateWorkerReport();
+    private final ManagerViewReport mvp = new ManagerViewReport();
+    private final UserWorkerViewReport uwvp = new UserWorkerViewReport();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

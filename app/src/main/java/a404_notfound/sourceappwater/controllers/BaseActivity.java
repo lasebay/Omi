@@ -24,7 +24,7 @@ public class BaseActivity extends AppCompatActivity {
       private static final String TAG = "Info";
 
 
-    private TextView usename;
+    private TextView username;
     private TextView address;
     private TextView coordinates;
     private TextView accountType;
@@ -36,7 +36,12 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_base);
+
+        username = (TextView) findViewById(R.id.username1);
+        address = (TextView) findViewById(R.id.address);
+        coordinates = (TextView) findViewById(R.id.coordinates);
+        accountType = (TextView) findViewById(R.id.accountType);
 
 
         Button mEditInfo = (Button) findViewById(R.id.editinfobutton);
@@ -47,6 +52,7 @@ public class BaseActivity extends AppCompatActivity {
                 startActivity(switchScreen);
             }
         });
+
 
 
         fbinstance = new FirebaseUtility();
@@ -66,7 +72,8 @@ public class BaseActivity extends AppCompatActivity {
                         "coor").getValue().toString();
                 String p = dataSnapshot.child("users").child(fbinstance.getUser()).child(
                         "accttype").getValue().toString();
-                usename.setText(n);
+
+                username.setText(n);
                 address.setText(m);
                 coordinates.setText(fbinstance.getUserEmail());
                 accountType.setText(p);
@@ -85,10 +92,7 @@ public class BaseActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         fbinstance.addAuthListner();
-        usename = (TextView) findViewById(R.id.username1);
-        address = (TextView) findViewById(R.id.address);
-        coordinates = (TextView) findViewById(R.id.coordinates);
-        accountType = (TextView) findViewById(R.id.accountType);
+
     }
 
     //Stop the Firebase Listener

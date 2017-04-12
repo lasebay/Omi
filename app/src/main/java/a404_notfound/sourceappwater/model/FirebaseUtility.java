@@ -30,7 +30,7 @@ public class FirebaseUtility {
 
     private static final String TAG = "Info";
 
-    private static String role = "None";
+    private static String role;
 
     /**
      * Sets up a connection to the Firebase Database
