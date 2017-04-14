@@ -20,19 +20,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import a404_notfound.sourceappwater.R;
-
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -113,7 +112,7 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(switchScreen);
             }
         });
-        mLoginFormView = findViewById(R.id.login_form);
+        mLoginFormView = findViewById(R.id.email_login_form);
 
         // Create Auth Instance for user as well as userListener
         mAuth = FirebaseAuth.getInstance();
@@ -221,8 +220,8 @@ public class RegisterActivity extends AppCompatActivity {
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
          return (email.contains("@") && (email.contains(".com")
-                 || email.contains(".edu") || email.contains(".net"))
-                 && (email.length() > 5));
+                || email.contains(".edu") || email.contains(".net"))
+                && email.length() > 5) ;
     }
 
     /**
@@ -273,6 +272,7 @@ public class RegisterActivity extends AppCompatActivity {
     ////  Extraneous Code ??? ///////
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
+            return;
         }
 
     }

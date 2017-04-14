@@ -5,91 +5,84 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <!-- The main content view -->
-        <FrameLayout
-            android:id="@+id/content_frame"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:padding="15dp">
 
-            <RelativeLayout
+            <Button
+                android:id="@+id/submitChangesButton"
+                android:layout_width="230dp"
+                android:layout_height="35dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="42dp"
+                android:background="@drawable/button_1"
+                android:text="@string/submitChanges"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/editInfo"
+                android:textColor="@color/steelBlue" />
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    android:id="@+id/submitChangesButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="21dp"
-                    android:background="@android:drawable/btn_default"
-                    android:text="@string/submitChanges" />
-
-                <TextView
-                    android:text="@string/editInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView4" />
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="50dp">
-
-                    <EditText
-                        android:id="@+id/nameEdit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/name" />
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="140dp"
-                    android:layout_alignParentStart="true">
-
-                    <EditText
-                        android:id="@+id/addressEdit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/address" />
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="107dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true">
-
-                </android.support.design.widget.TextInputLayout>
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="50dp">
 
                 <EditText
-                    android:id="@+id/coordinateEdit"
+                    android:id="@+id/nameEdit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:hint="Coordinates" />
+                    android:hint="@string/name"
+                    android:textColor="@color/steelBlue" />
+            </android.support.design.widget.TextInputLayout>
 
-            </RelativeLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="140dp">
 
-        </FrameLayout>
-        <!-- The navigation drawer -->
-        <ListView android:id="@+id/left_drawer"
-            android:layout_width="240dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:choiceMode="singleChoice"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dp"
-            android:background="#111"/>
-    </android.support.v4.widget.DrawerLayout>
+                <EditText
+                    android:id="@+id/addressEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/address"
+                    android:textColor="@color/steelBlue" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="107dp">
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+
+            <EditText
+                android:id="@+id/coordinateEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:hint="@string/coordinates"
+                android:textColor="@color/steelBlue" />
+
+        </RelativeLayout>
+
+    <!-- The navigation drawer -->
+</android.support.v4.widget.DrawerLayout>

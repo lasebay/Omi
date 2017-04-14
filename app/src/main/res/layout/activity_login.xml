@@ -52,18 +52,15 @@
 
     <Button
         android:id="@+id/sign_in_button"
-        style="@android:style/TextAppearance.Material.Small"
         android:layout_width="230dp"
         android:layout_height="35dp"
         android:layout_above="@+id/cancel_bt"
         android:layout_alignStart="@+id/cancel_bt"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_style"
         android:elevation="0dp"
-        android:fontFamily="sans-serif"
         android:text="@string/action_sign_in"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
         android:textStyle="bold"
         android:typeface="sans" />
@@ -72,17 +69,15 @@
         android:id="@+id/cancel_bt"
         android:layout_width="230dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/button_style"
-        android:fontFamily="sans-serif"
         android:text="@string/cancel"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:typeface="sans"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:typeface="sans" />
 
     <EditText
         android:id="@+id/password"
