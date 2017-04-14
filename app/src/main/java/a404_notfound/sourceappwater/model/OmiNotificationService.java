@@ -8,6 +8,9 @@ import com.google.firebase.messaging.RemoteMessage;
  */
 
 public class OmiNotificationService extends FirebaseMessagingService {
+    /**
+     * Constructor for service
+     */
     public OmiNotificationService() {
         super();
     }
