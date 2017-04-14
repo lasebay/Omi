@@ -112,7 +112,7 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(switchScreen);
             }
         });
-        mLoginFormView = findViewById(R.id.login_form);
+        mLoginFormView = findViewById(R.id.email_login_form);
 
         // Create Auth Instance for user as well as userListener
         mAuth = FirebaseAuth.getInstance();
