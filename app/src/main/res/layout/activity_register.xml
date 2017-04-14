@@ -78,6 +78,8 @@
             android:layout_marginBottom="13dp"
             android:fontFamily="sans-serif"
             android:hint="@string/re_enter_password"
+            android:password="true"
+            android:singleLine="true"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="146dp" />
 
@@ -95,6 +97,8 @@
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
             android:maxLines="1"
+            android:password="true"
+            android:singleLine="true"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="96dp" />
 
@@ -108,7 +112,8 @@
             android:fontFamily="sans-serif"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:singleLine="true" />
     </RelativeLayout>
 
 </LinearLayout>

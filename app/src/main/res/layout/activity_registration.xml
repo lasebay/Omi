@@ -47,7 +47,8 @@
             android:id="@+id/name_of_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/nameQuery" />
+            android:hint="@string/nameQuery"
+            android:singleLine="true" />
     </android.support.design.widget.TextInputLayout>
 
 </RelativeLayout>
