@@ -27,7 +27,6 @@ public class EditInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_info);
 
 
         mName = (EditText) findViewById(R.id.nameEdit);

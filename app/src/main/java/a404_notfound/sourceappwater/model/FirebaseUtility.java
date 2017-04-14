@@ -49,17 +49,22 @@ public class FirebaseUtility {
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    mRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            role = dataSnapshot.child("users").child(user.getUid()).child(
-                                    "accttype").getValue().toString();
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
+                    try {
+                        mRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                role = dataSnapshot.child("users").child(user.getUid()).child(
+                                        "accttype").getValue().toString();
+                            }
 
-                        }
-                    });
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+                    } catch (Exception e) {
+                        role = "User";
+                    }
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -67,8 +72,6 @@ public class FirebaseUtility {
                 // ...
             }
         };
-
-
     }
 
     /**
