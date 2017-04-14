@@ -200,4 +200,13 @@ public class RegistrationActivity extends AppCompatActivity
     public void onNothingSelected(AdapterView<?> parent) {
         userClassification = "User";
     }
+
+
+    @Override
+    public void onBackPressed() {
+        //TODO Display Dialouge alert
+        return;
+    }
 }
+
+
