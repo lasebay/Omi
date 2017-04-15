@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -20,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 /**
  * Controller for the user's profile screen
  */
-public class BaseActivity extends AppCompatActivity {
+public class AccountInfoActivity extends AppCompatActivity {
       private static final String TAG = "Info";
 
 
@@ -36,7 +35,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+        setContentView(R.layout.activity_account_info);
 
         username = (TextView) findViewById(R.id.username1);
         address = (TextView) findViewById(R.id.address);

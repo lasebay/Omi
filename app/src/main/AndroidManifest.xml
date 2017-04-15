@@ -27,6 +27,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
         <activity
             android:name=".controllers.WelcomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -36,17 +37,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".controllers.LoginActivity"
             android:label="Log in" />
+
         <activity
             android:name=".controllers.RegisterActivity"
             android:label="@string/title_activity_register" />
+
         <activity
             android:name=".controllers.RegistrationActivity"
             android:label="Registration" />
-        <activity android:name=".controllers.BaseActivity"
-            android:parentActivityName=".controllers.NavigationMain" />
+
+        <activity android:name=".controllers.AccountInfoActivity"
+            android:parentActivityName=".controllers.NavigationMain"
+            android:label="Base" />
+
         <activity android:name=".controllers.EditInfoActivity" />
         <!--
              The API key for Google Maps-based APIs

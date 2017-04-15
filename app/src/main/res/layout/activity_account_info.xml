@@ -13,41 +13,46 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
-                android:id="@+id/address"
+                android:fontFamily="monospace"
                 android:text="@string/address"
                 android:layout_below="@+id/username1"
                 android:layout_alignParentStart="true" />
 
             <TextView
+                android:id="@+id/coordinates"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/coordinates"
+                android:layout_marginTop="47dp"
+                android:fontFamily="monospace"
                 android:text="@string/coordinates"
                 android:layout_below="@+id/address"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="34dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
-                android:id="@+id/username1"
-                android:text="@string/name"
-                android:layout_below="@+id/accountType"
                 android:layout_alignParentStart="true" />
 
             <TextView
+                android:id="@+id/username1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/accountType"
+                android:layout_marginTop="44dp"
+                android:fontFamily="monospace"
+                android:text="@string/name" />
+
+            <TextView
                 android:id="@+id/accountType"
-                android:text="@string/AcctType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="18dp"
+                android:fontFamily="monospace"
+                android:text="@string/AcctType" />
 
             <Button
                 android:id="@+id/editinfobutton"
@@ -57,9 +62,11 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="64dp"
                 android:background="@android:drawable/screen_background_light_transparent"
+                android:fontFamily="monospace"
+                android:onClick="onClick"
                 android:text="@string/editInfo"
                 android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorPrimaryDark" />
 
         </RelativeLayout>
 
