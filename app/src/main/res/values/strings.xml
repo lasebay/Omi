@@ -18,6 +18,7 @@
 
     <!-- Strings of activity screen titles/headers -->
     <string name="title_activity_account_info">account_info</string>
+    <string name="title_activity_create_report">create_report</string>
     <string name="title_activity_navigate">NavigateActivity</string>
     <string name="title_activity_navigation_main">NavigationMain</string>
     <string name="title_activity_register">Register</string>
