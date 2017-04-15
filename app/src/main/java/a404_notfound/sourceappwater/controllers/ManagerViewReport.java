@@ -3,7 +3,6 @@ package a404_notfound.sourceappwater.controllers;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +38,7 @@ public class ManagerViewReport extends Fragment {
             }
         });
 
-        Button seeYourReport = (Button) view.findViewById(R.id.seeYourReport);
+        Button seeYourReport = (Button) view.findViewById(R.id.seeMyReports);
         seeYourReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

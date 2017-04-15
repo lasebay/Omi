@@ -15,7 +15,7 @@ import a404_notfound.sourceappwater.model.FirebaseUtility;
 /**
  * Controller for changing user information
  */
-public class EditInfoActivity extends AppCompatActivity {
+public class EditProfileActivity extends AppCompatActivity {
 
     private EditText mName;
     private EditText mAddrs;

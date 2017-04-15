@@ -18,12 +18,20 @@
 
     <!-- Strings of activity screen titles/headers -->
     <string name="title_activity_account_info">account_info</string>
+    <string name="title_activity_edit_profile">edit_profile</string>
     <string name="title_activity_create_report">create_report</string>
     <string name="title_activity_navigate">NavigateActivity</string>
     <string name="title_activity_navigation_main">NavigationMain</string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_water_availability_map">Map</string>
 
+    <!-- ID's of buttons -->
+    <string name="edit_profile_button">edit_profile</string>
+
+    <!-- TextView texts -->
+    <string name="edit_profile_text">Edit Profile</string>
+
+    <!---->
 
     <string name="i_agree_to_the_terms_and_conditions">I agree to the terms and conditions</string>
     <string name="re_enter_password">Re-Enter Password</string>
@@ -31,7 +39,7 @@
     <string name="coordinates">Coordinates</string>
     <string name="address">Address</string>
     <string name="AcctType">Account Type</string>
-    <string name="editInfo">Edit Info</string>
+
     <string name="createReport">Create Report</string>
     <string name="cancel">Cancel</string>
     <string name="submitChanges">Submit Changes</string>

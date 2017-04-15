@@ -13,11 +13,11 @@
         android:layout_marginTop="82dp"
         android:background="@drawable/button_style"
         android:text="Go To User Report"
-        android:layout_below="@+id/seeYourReport"
+        android:layout_below="@+id/seeMyReports"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/seeYourReport"
+        android:id="@+id/seeMyReports"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="78dp"

@@ -43,11 +43,11 @@ public class AccountInfoActivity extends AppCompatActivity {
         accountType = (TextView) findViewById(R.id.accountType);
 
 
-        Button mEditInfo = (Button) findViewById(R.id.editinfobutton);
+        Button mEditInfo = (Button) findViewById(R.id.edit_profile_button);
         mEditInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchScreen = new Intent(getApplicationContext(), EditInfoActivity.class);
+                Intent switchScreen = new Intent(getApplicationContext(), EditProfileActivity.class);
                 startActivity(switchScreen);
             }
         });

@@ -42,7 +42,7 @@ public class UserWorkerViewReport extends Fragment {
             }
         });
 
-        Button seeYourReport = (Button) view.findViewById(R.id.seeYourReport);
+        Button seeYourReport = (Button) view.findViewById(R.id.seeMyReports);
         seeYourReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

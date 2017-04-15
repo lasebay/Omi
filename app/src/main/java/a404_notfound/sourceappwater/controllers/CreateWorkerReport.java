@@ -30,7 +30,7 @@ import a404_notfound.sourceappwater.model.WorkerReport;
 /**
  * Creates a worker report class using the information submitted
  */
-public class CreateWorkerReport extends CreateReportsActivity {
+public class CreateWorkerReport extends CreateReportActivity {
 
     private FirebaseUtility fbinstance;
     private EditText editText;

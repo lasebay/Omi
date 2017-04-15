@@ -47,7 +47,7 @@ import a404_notfound.sourceappwater.model.WaterType;
 /**
  * Class Written to make user Report Activities
  */
-public class CreateReportsActivity extends Fragment implements OnMapReadyCallback,
+public class CreateReportActivity extends Fragment implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private TextView mName;
@@ -76,7 +76,7 @@ public class CreateReportsActivity extends Fragment implements OnMapReadyCallbac
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_create_reports, container, false);
+        return inflater.inflate(R.layout.activity_create_report, container, false);
     }
 
     @Override

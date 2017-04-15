@@ -7,7 +7,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 //TODO Check if needed
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -34,7 +33,7 @@ public class NavigationMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private final WaterAvailabilityMap wap = new WaterAvailabilityMap();
-    private final CreateReportsActivity crp = new CreateReportsActivity();
+    private final CreateReportActivity crp = new CreateReportActivity();
     private final FirebaseUtility fbinstance = new FirebaseUtility();
     private final CreateWorkerReport crwp = new CreateWorkerReport();
     private final ManagerViewReport mvp = new ManagerViewReport();
@@ -66,7 +65,7 @@ public class NavigationMain extends AppCompatActivity
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchScreen = new Intent(getApplicationContext(), EditInfoActivity.class);
+                Intent switchScreen = new Intent(getApplicationContext(), EditProfileActivity.class);
                 startActivity(switchScreen);
             }
         });
