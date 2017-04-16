@@ -39,7 +39,7 @@ public class WaterAvailabilityMap extends Fragment implements OnMapReadyCallback
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_water_availability_map, container, false);
+        return inflater.inflate(R.layout.activity_water_availibility_map, container, false);
     }
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

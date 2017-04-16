@@ -14,18 +14,19 @@ public class WorkerReport extends Report {
 
     /**
      *
-     * @param reportType the report type that is being passed in
-     * @param reporter  the registered user who is reporting
-     * @param coordinates   the coordinate of the user
-     * @param waterType water type that is being reported
-     * @param waterCondition    condition of the water
-     * @param date the date
-     * @param ppm the ppm being passed in
-     * @param vpm the vpm being passed in
+     * @param reportType defaulted to Worker
+     * @param reporter the Name of the reporter
+     * @param coordinates the location of the report
+     * @param waterType the type of water
+     * @param waterCondition condition water is in
+     * @param date date the report was created
+     * @param userId key to associate the user in the database
+     * @param ppm pollution count
+     * @param vpm viral count
      */
     public WorkerReport(String reportType, String reporter, LatLng coordinates, String waterType
-            , String waterCondition, String date, long ppm, long vpm) {
-        super("Worker",reporter, coordinates, waterType, waterCondition, date);
+            , String waterCondition, Map<String ,Object> date, String userId, long ppm, long vpm) {
+        super("Worker",reporter, coordinates, waterType, waterCondition, date, userId);
         this.ppm = ppm;
         this.vpm = vpm;
     }
@@ -44,5 +45,21 @@ public class WorkerReport extends Report {
         s = s + "PPM: " + ppm + "/n";
         s = s + "VPM: " + vpm + "/n";
         return s;
+    }
+
+    /**
+     * Method to get the pollution count of water
+     * @return long number
+     */
+    long getPpm() {
+        return ppm;
+    }
+
+    /**
+     * Method to get the viral count of water
+     * @return long number
+     */
+    public long getVpm() {
+        return vpm;
     }
 }
