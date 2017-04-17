@@ -31,13 +31,13 @@ import a404_notfound.sourceappwater.model.FirbaseUtility;
 public class NavigationMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private WaterAvailibilityMap wap = new WaterAvailibilityMap();
-    private ViewReportActivity vrp = new ViewReportActivity();
-    private CreateReportsActivity crp = new CreateReportsActivity();
-    private FirbaseUtility fbinstance = new FirbaseUtility();
-    private CreateWorkerReport crwp = new CreateWorkerReport();
-    private ManagerViewReport mvp = new ManagerViewReport();
-    private UserWorkerViewReport uwvp = new UserWorkerViewReport();
+    private final WaterAvailibilityMap wap = new WaterAvailibilityMap();
+    private final ViewReportActivity vrp = new ViewReportActivity();
+    private final CreateReportsActivity crp = new CreateReportsActivity();
+    private final FirbaseUtility fbinstance = new FirbaseUtility();
+    private final CreateWorkerReport crwp = new CreateWorkerReport();
+    private final ManagerViewReport mvp = new ManagerViewReport();
+    private final UserWorkerViewReport uwvp = new UserWorkerViewReport();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -124,7 +124,7 @@ public class WaterAvailibilityMap extends Fragment implements OnMapReadyCallback
     public void onStart() {
         mGoogleApiClient.connect();
         super.onStart();
-        mMapView.onStart();;
+        mMapView.onStart();
     }
 
     @Override

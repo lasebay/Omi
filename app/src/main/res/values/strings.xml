@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Omi</string>
-
+    <string name="facebook_app_id">180585579119088</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -44,7 +44,7 @@
     <string name="home">Home</string>
     <string name="logout">Logout</string>
     <string name="find_water">Find Water</string>
-    <string name="submmited_reports">Your Reports</string>
+    <string name="submitted_reports">Your Reports</string>
     <string name="reporter">Reporter</string>
     <string name="date">Date</string>
     <string name="water_cond">Water Condition</string>

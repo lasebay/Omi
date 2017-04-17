@@ -22,7 +22,7 @@ import a404_notfound.sourceappwater.R;
 public class ReportViewAdapter extends RecyclerView.Adapter<ReportViewAdapter.ReportViewHolder> {
     //private SparseArray<Report> holder;
     private List<Report> userReport;
-    private List<Report> holder;
+    private final List<Report> holder;
 
     /**
      * Adapter manages the large dataset of reports

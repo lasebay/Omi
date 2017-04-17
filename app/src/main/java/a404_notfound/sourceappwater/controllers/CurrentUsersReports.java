@@ -6,8 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import a404_notfound.sourceappwater.R;
-import a404_notfound.sourceappwater.model.FirbaseUtility;
-import a404_notfound.sourceappwater.model.Report;
 import a404_notfound.sourceappwater.model.ReportViewAdapter;
 import a404_notfound.sourceappwater.model.ReportsHolder;
 
