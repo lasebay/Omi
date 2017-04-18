@@ -58,6 +58,11 @@
     <string name="report_id">Report ID</string>
     <string name="vpm">VPM</string>
     <string name="ppm">PPM</string>
+    <string name="go_to_my_reports">Go To My Reports</string>
+    <string name="go_to_user_reports">Go To User Reports</string>
+    <string name="back">Back</string>
+    <string name="loading">Loading\u2026</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_loading">LoadingActivity</string>
 </resources>

@@ -10,19 +10,19 @@
         android:id="@+id/seeUserReport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/seeYourReport"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="82dp"
         android:background="@drawable/button_style"
-        android:text="Go To User Report"
-        android:layout_below="@+id/seeYourReport"
-        android:layout_centerHorizontal="true" />
+        android:text="@string/go_to_user_reports" />
 
     <Button
         android:id="@+id/seeYourReport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/seeUserReport"
         android:layout_marginTop="78dp"
         android:background="@drawable/button_style"
-        android:text="Go To My Reports"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/seeUserReport" />
+        android:text="@string/go_to_my_reports" />
 </RelativeLayout>
