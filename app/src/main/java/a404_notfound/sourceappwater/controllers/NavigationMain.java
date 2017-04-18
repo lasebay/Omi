@@ -141,9 +141,10 @@ public class NavigationMain extends AppCompatActivity
     private void displaySelected(int id) {
         Fragment fragment = null;
 
-        if (id == R.id.nav_home) {
-            //TODO Deceide what will the home screen be
-        } else if (id == R.id.nav_find_water) {
+//        if (id == R.id.nav_home) {
+//            //TODO Deceide what will the home screen be
+//        } else
+        if (id == R.id.nav_find_water) {
             fragment = wap;
         } else if (id == R.id.nav_createReport) {
             if (("Worker").equals(FirebaseUtility.getRole())
