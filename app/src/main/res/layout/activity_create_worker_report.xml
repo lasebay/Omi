@@ -23,29 +23,100 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <Spinner
-                android:id="@+id/waterType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp" />
-
-            <Spinner
-                android:id="@+id/waterCondition"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="29dp" />
-
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/map"
-                android:layout_width="match_parent"
-                android:layout_height="230dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="0dp" />
-
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:ignore="UselessParent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <Spinner
+                                android:id="@+id/waterType"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="32dp"
+                                android:paddingBottom="20dp"
+                                android:paddingTop="20dp" />
+
+                            <Spinner
+                                android:id="@+id/waterCondition"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="20dp"
+                                android:paddingTop="20dp" />
+
+                            <com.google.android.gms.maps.MapView
+                                android:id="@+id/map"
+                                android:layout_width="match_parent"
+                                android:layout_height="230dp"
+                                android:paddingBottom="20dp"
+                                android:paddingTop="20dp"
+                                tools:layout_editor_absoluteX="8dp"
+                                tools:layout_editor_absoluteY="0dp" />
+
+                            <EditText
+                                android:id="@+id/ppm"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="numberSigned"
+                                android:paddingBottom="20dp"
+                                android:paddingTop="20dp"
+                                android:text="@string/ppm" />
+
+                            <EditText
+                                android:id="@+id/vpm"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="numberSigned"
+                                android:paddingBottom="20dp"
+                                android:paddingTop="20dp"
+                                android:text="@string/vpm" />
+
+                            <Button
+                                android:id="@+id/createReport2"
+                                android:layout_width="230dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentStart="true"
+                                android:background="@drawable/button_1"
+                                android:text="@string/createReport"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                tools:ignore="ObsoleteLayoutParam" />
+
+                            <Button
+                                android:id="@+id/reportCancelBttn"
+                                android:layout_width="230dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/button_1"
+                                android:text="@string/cancel"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/tab1"
@@ -59,52 +130,6 @@
                         android:layout_width="230dp"
                         android:layout_height="35dp"
                         android:layout_marginBottom="10dp"
-                        android:background="@drawable/button_1"
-                        android:text="@string/createReport"
-                        android:textColor="@color/cardview_light_background"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/reportCancelBttn"
-                        android:layout_width="230dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/button_1"
-                        android:text="@string/cancel"
-                        android:textColor="@color/cardview_light_background"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/vpm"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="numberSigned"
-                        android:text="@string/vpm" />
-
-                    <EditText
-                        android:id="@+id/ppm"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="numberSigned"
-                        android:text="@string/ppm" />
-
-                    <Button
-                        android:id="@+id/createReport2"
-                        android:layout_width="230dp"
-                        android:layout_height="35dp"
-                        android:layout_marginBottom="40dp"
                         android:background="@drawable/button_1"
                         android:text="@string/createReport"
                         android:textColor="@color/cardview_light_background"
