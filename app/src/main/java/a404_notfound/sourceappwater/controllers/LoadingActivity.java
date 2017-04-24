@@ -1,13 +1,9 @@
 package a404_notfound.sourceappwater.controllers;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -15,8 +11,10 @@ import android.widget.ProgressBar;
 
 import a404_notfound.sourceappwater.R;
 
+/**
+ * Loading screen for when app is first opened
+ */
 public class LoadingActivity extends AppCompatActivity {
-    private ProgressDialog progress;
     private ProgressBar pb;
 
     @Override
@@ -24,22 +22,17 @@ public class LoadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        new LoadViewTask().execute();
+        LoadViewTask loadView= new LoadViewTask();
+        loadView.execute();
     }
 
     private class LoadViewTask extends AsyncTask<Void, Integer, Void> {
 
         @Override
         protected void onPreExecute() {
-            //create progress bar and show it
+            //connect to progress bar
             setContentView(R.layout.activity_loading);
             pb = (ProgressBar) findViewById(R.id.progressBar);
-
-//            progress = new ProgressDialog(LoadingActivity.this);
-//            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//            progress.setTitle("Loading...");
-//            progress.setProgress(0);
-//            progress.show();
         }
 
         @Override
@@ -48,7 +41,7 @@ public class LoadingActivity extends AppCompatActivity {
             try {
                 synchronized(this) {
                     int counter = 0;
-                    while(counter <= 4) {
+                    while(counter < 4) {
                         this.wait(850);
                         counter++;
                         publishProgress(counter * 25);
@@ -56,7 +49,7 @@ public class LoadingActivity extends AppCompatActivity {
                 }
 
             } catch (InterruptedException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             return null;
         }
@@ -71,7 +64,7 @@ public class LoadingActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             //get rid of progress dialog
-//            progress.dismiss();
+//            pb.dismiss();
 
             //show the screen's content
             setContentView(R.layout.activity_welcome);
