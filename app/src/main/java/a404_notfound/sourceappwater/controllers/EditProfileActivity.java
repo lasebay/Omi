@@ -3,6 +3,7 @@ package a404_notfound.sourceappwater.controllers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +28,7 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_edit_info);
 
         mName = (EditText) findViewById(R.id.nameEdit);
         mAddrs = (EditText) findViewById(R.id.addressEdit);
@@ -39,6 +40,15 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateInfo();
+                Intent switchScreen = new Intent(getApplicationContext(), NavigationMain.class);
+                startActivity(switchScreen);
+            }
+        });
+
+        Button cancel = (Button) findViewById(R.id.cancelButton);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent switchScreen = new Intent(getApplicationContext(), NavigationMain.class);
                 startActivity(switchScreen);
             }
@@ -68,19 +78,19 @@ public class EditProfileActivity extends AppCompatActivity {
 
         mName.setError(null);
 
-        if (name == "") {
+        if (TextUtils.isEmpty(name)) {
             cancel = true;
             focusView = mName;
             mName.setError("This field cannot be empty");
         }
 
-        if (address == "") {
+        if (TextUtils.isEmpty(address)) {
             cancel = true;
             focusView = mAddrs;
             mAddrs.setError("This field cannot be empty");
         }
 
-        if (coordinates == "") {
+        if (TextUtils.isEmpty(coordinates)) {
             cancel = true;
             focusView = mCoord;
             mCoord.setError("This field cannot be empty");

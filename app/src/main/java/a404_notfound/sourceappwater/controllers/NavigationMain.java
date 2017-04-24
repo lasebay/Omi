@@ -7,6 +7,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 //TODO Check if needed
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -33,7 +34,7 @@ public class NavigationMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private final WaterAvailabilityMap wap = new WaterAvailabilityMap();
-    private final CreateReportActivity crp = new CreateReportActivity();
+    private final CreateReportsActivity crp = new CreateReportsActivity();
     private final FirebaseUtility fbinstance = new FirebaseUtility();
     private final CreateWorkerReport crwp = new CreateWorkerReport();
     private final ManagerViewReport mvp = new ManagerViewReport();
@@ -45,6 +46,9 @@ public class NavigationMain extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_navigation_main, wap);
+        ft.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -65,7 +69,7 @@ public class NavigationMain extends AppCompatActivity
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchScreen = new Intent(getApplicationContext(), EditProfileActivity.class);
+                Intent switchScreen = new Intent(getApplicationContext(), EditInfoActivity.class);
                 startActivity(switchScreen);
             }
         });
@@ -107,7 +111,7 @@ public class NavigationMain extends AppCompatActivity
 //        getMenuInflater().inflate(R.menu.navigation_main, menu);
 //        return true;
 //    }
-//
+
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        // Handle action bar item clicks here. The action bar will
@@ -140,9 +144,10 @@ public class NavigationMain extends AppCompatActivity
     private void displaySelected(int id) {
         Fragment fragment = null;
 
-        if (id == R.id.nav_home) {
-            //TODO Deceide what will the home screen be
-        } else if (id == R.id.nav_find_water) {
+//        if (id == R.id.nav_home) {
+//            //TODO Deceide what will the home screen be
+//        } else
+        if (id == R.id.nav_find_water) {
             fragment = wap;
         } else if (id == R.id.nav_createReport) {
             if (("Worker").equals(FirebaseUtility.getRole())

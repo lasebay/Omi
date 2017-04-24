@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="a404_notfound.sourceappwater">
 
-
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -21,32 +20,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <service
-            android:name=".model.OmiNotificationService">
+        <service android:name=".model.OmiNotificationService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
         <!-- ACTIVITIES -->
         <activity
+            android:name=".controllers.LoadingActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".controllers.AccountInfoActivity"
-            android:label="Account Information" />
+            android:label="Account Information"
+            android:parentActivityName=".controllers.NavigationMain" />
+        <!-- suppress AndroidDomInspection -->
         <activity
-            android:name=".controllers.CreateReportActivity"
-            android:label="Create Report" />
-        <activity
-            android:name=".controllers.CreateWorkerReport"
-            android:label="Create Report" />
-        <activity
-            android:name=".controllers.CurrentUsersReports"
-            android:label="Current User Reports" />
-        <activity
-            android:name=".controllers.CurrentWorkerReports"
-            android:label="Current Worker Reports" />
-        <activity
-            android:name=".controllers.EditProfileActivity"
-            android:label="Edit Profile"/>
+            android:name=".controllers.WelcomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".controllers.LoginActivity"
             android:label="Log in" />
@@ -56,19 +53,7 @@
         <activity
             android:name=".controllers.RegisterActivity"
             android:label="@string/title_activity_register" />
-        <activity
-            android:name=".controllers.WaterAvailabilityMap"
-            android:label="Find Water" />
-        <activity
-        android:name=".controllers.WelcomeActivity"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <!--suppress AndroidDomInspection -->
+        <activity android:name=".controllers.EditInfoActivity" />
         <!--
              The API key for Google Maps-based APIs
              is defined as a string resource.
@@ -89,21 +74,31 @@
             android:name=".controllers.NavigationMain"
             android:label="@string/title_activity_navigation_main"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".controllers.CurrentUsersReports" />
         <activity android:name=".controllers.HistoricalReportCriteria" />
         <activity android:name=".controllers.ViewHistoricalReport" />
-        <activity android:name=".controllers.YourReportsView"/>
+        <activity android:name=".controllers.CurrentWorkerReports" />
+        <activity android:name=".controllers.YourReportsView" />
 
-        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
-     See README(https://goo.gl/l4GJaQ) for more. -->
+        <!--
+     Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/dropicon" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
+        <!--<activity-->
+            <!--android:name=".controllers.LoadingActivity"-->
+            <!--android:label="@string/title_activity_loading"-->
+            <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>-->
     </application>
 
 </manifest>
