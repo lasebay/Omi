@@ -46,6 +46,7 @@ public class NavigationMain extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //making default screen the water availability screen
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_navigation_main, wap);
         ft.commit();
