@@ -15,7 +15,7 @@ import a404_notfound.sourceappwater.model.FirebaseUtility;
 /**
  * Controller for changing user information
  */
-public class EditInfoActivity extends AppCompatActivity {
+public class EditProfileActivity extends AppCompatActivity {
 
     private EditText mName;
     private EditText mAddrs;
@@ -27,6 +27,7 @@ public class EditInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_profile);
 
 
         mName = (EditText) findViewById(R.id.nameEdit);
@@ -39,6 +40,15 @@ public class EditInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateInfo();
+                Intent switchScreen = new Intent(getApplicationContext(), NavigationMain.class);
+                startActivity(switchScreen);
+            }
+        });
+
+        Button cancel = (Button) findViewById(R.id.cancelButton);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent switchScreen = new Intent(getApplicationContext(), NavigationMain.class);
                 startActivity(switchScreen);
             }
