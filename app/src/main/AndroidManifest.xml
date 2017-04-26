@@ -28,8 +28,9 @@
             </intent-filter>
         </service>
 
+        <!-- ACTIVITIES -->
         <activity
-            android:name=".controllers.WelcomeActivity"
+            android:name=".controllers.LoadingActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +38,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".controllers.AccountInfoActivity"
+            android:label="Account Information"
+            android:parentActivityName=".controllers.NavigationMain" />
+        <!-- suppress AndroidDomInspection -->
+        <activity
+            android:name=".controllers.WelcomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
             android:name=".controllers.LoginActivity"
@@ -50,11 +59,7 @@
             android:name=".controllers.RegistrationActivity"
             android:label="Registration" />
 
-        <activity android:name=".controllers.AccountInfoActivity"
-            android:parentActivityName=".controllers.NavigationMain"
-            android:label="Base" />
-
-        <activity android:name=".controllers.EditInfoActivity" />
+        <activity android:name=".controllers.EditProfileActivity" />
         <!--
              The API key for Google Maps-based APIs
              is defined as a string resource.
