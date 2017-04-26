@@ -28,7 +28,7 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_info);
+        setContentView(R.layout.activity_edit_profile);
 
         mName = (EditText) findViewById(R.id.nameEdit);
         mAddrs = (EditText) findViewById(R.id.addressEdit);

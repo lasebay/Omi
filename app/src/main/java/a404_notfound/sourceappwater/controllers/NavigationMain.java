@@ -34,7 +34,7 @@ public class NavigationMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private final WaterAvailabilityMap wap = new WaterAvailabilityMap();
-    private final CreateReportsActivity crp = new CreateReportsActivity();
+    private final CreateReportActivity crp = new CreateReportActivity();
     private final FirebaseUtility fbinstance = new FirebaseUtility();
     private final CreateWorkerReport crwp = new CreateWorkerReport();
     private final ManagerViewReport mvp = new ManagerViewReport();
@@ -70,7 +70,7 @@ public class NavigationMain extends AppCompatActivity
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchScreen = new Intent(getApplicationContext(), EditInfoActivity.class);
+                Intent switchScreen = new Intent(getApplicationContext(), EditProfileActivity.class);
                 startActivity(switchScreen);
             }
         });
